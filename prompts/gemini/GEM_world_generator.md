@@ -139,6 +139,7 @@
 - ecology_seed.max_tier 不得超過 magic_level 允許的上限
   （magic_level 為 none 時，max_tier 不得超過 tier_0_mundane）
 - races 陣列至少 1 個，上限 6 個
+- 所有機率權重欄位（npc_probability_weights、creature_probability_weights）必須輸出為 JSON number，禁止加引號；錯誤：`"desperate_people": "0.3"`，正確：`"desperate_people": 0.3`- races 陣列至少 1 個，上限 6 個
 
 【輸出 schema（欄位不可增減）】
 
@@ -187,10 +188,10 @@
         "ecology_seed": {
           "max_tier": "tier_0_mundane | tier_1_low_fantasy | tier_2_mid_fantasy | tier_3_cosmic",
           "creature_probability_weights": {
-            "mundane_wildlife": "0.0-1.0，四個權重總和必須等於 1.0",
-            "corrupted_wildlife": "0.0-1.0（magic_level 為 none 時必須為 0）",
-            "human_threats": "0.0-1.0",
-            "folklore_entities": "0.0-1.0（只有 max_tier 為 tier_1 以上才可大於 0.05）"
+            "mundane_wildlife": "number，0.0-1.0，四個權重總和必須等於 1.0，禁止加引號（✓ 0.3　✗ \"0.3\"）",
+            "corrupted_wildlife": "number，0.0-1.0，禁止加引號（magic_level 為 none 時必須為 0）",
+            "human_threats": "number，0.0-1.0，禁止加引號",
+            "folklore_entities": "number，0.0-1.0，禁止加引號（只有 max_tier 為 tier_1 以上才可大於 0.05）"
           },
           "flavor_density": {
             "level": "low | medium | high",

@@ -261,6 +261,26 @@ class Validator {
     return true;
   }
 
+  /**
+   * 驗證機率權重欄位：必須是 number 型別且介於 0.0-1.0。
+   * 若為字串型別（Generator 常見輸出錯誤）給出具體提示。
+   */
+  requireWeight(val: unknown, context: string): boolean {
+    if (typeof val === 'string' && !isNaN(parseFloat(val))) {
+      this.error(`${context} 是字串「"${val}"」而非數字 ${val}——Generator 輸出了帶引號的數值，請移除引號（JSON 中數字不加引號）`);
+      return false;
+    }
+    if (typeof val !== 'number') {
+      this.error(`${context} 必須是 0.0-1.0 之間的數字，目前型別為 ${typeof val}`);
+      return false;
+    }
+    if (val < 0 || val > 1) {
+      this.error(`${context} 的值 ${val} 超出範圍，必須介於 0.0-1.0`);
+      return false;
+    }
+    return true;
+  }
+
   get hasErrors() {
     return this.errors.length > 0;
   }
@@ -358,16 +378,14 @@ function validate(data: WorldJson): Validator {
       // npc_probability_weights 總和檢查
       if (ss.npc_probability_weights) {
         const pw = ss.npc_probability_weights;
-        const sum = (pw.desperate_people || 0) + (pw.opportunists || 0) + (pw.loyal_faction_members || 0) + (pw.idealists || 0);
+        const sum = Number(pw.desperate_people || 0) + Number(pw.opportunists || 0) + Number(pw.loyal_faction_members || 0) + Number(pw.idealists || 0);
         const rounded = Math.round(sum * 100) / 100;
         if (Math.abs(rounded - 1.0) > 0.01) {
           v.error(`${sc}.npc_probability_weights 四個權重總和必須為 1.0，目前為 ${rounded}`);
         }
         for (const key of ['desperate_people', 'opportunists', 'loyal_faction_members', 'idealists']) {
           const val = (pw as unknown as Record<string, unknown>)[key];
-          if (typeof val !== 'number' || val < 0 || val > 1) {
-            v.error(`${sc}.npc_probability_weights.${key} 必須是 0.0-1.0 之間的數字`);
-          }
+          v.requireWeight(val, `${sc}.npc_probability_weights.${key}`);
         }
       }
 
@@ -395,19 +413,17 @@ function validate(data: WorldJson): Validator {
           const cw = ec.creature_probability_weights;
           const cwc = `${ecc}.creature_probability_weights`;
           const cwSum =
-            (cw.mundane_wildlife || 0) +
-            (cw.corrupted_wildlife || 0) +
-            (cw.human_threats || 0) +
-            (cw.folklore_entities || 0);
+            Number(cw.mundane_wildlife || 0) +
+            Number(cw.corrupted_wildlife || 0) +
+            Number(cw.human_threats || 0) +
+            Number(cw.folklore_entities || 0);
           const cwRounded = Math.round(cwSum * 100) / 100;
           if (Math.abs(cwRounded - 1.0) > 0.01) {
             v.error(`${cwc} 四個權重總和必須為 1.0，目前為 ${cwRounded}`);
           }
           for (const key of ['mundane_wildlife', 'corrupted_wildlife', 'human_threats', 'folklore_entities']) {
             const val = (cw as unknown as Record<string, unknown>)[key];
-            if (typeof val !== 'number' || val < 0 || val > 1) {
-              v.error(`${cwc}.${key} 必須是 0.0-1.0 之間的數字`);
-            }
+            v.requireWeight(val, `${cwc}.${key}`);
           }
           // magic_level 為 none 時 corrupted_wildlife 必須為 0
           if (data.world.magic_level === 'none' && (cw.corrupted_wildlife ?? 0) !== 0) {
