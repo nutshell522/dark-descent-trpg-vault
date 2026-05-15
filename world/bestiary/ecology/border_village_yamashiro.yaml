@@ -1,0 +1,27 @@
+region_id: border_village_yamashiro
+region_name: 山城國邊境：葛葉村
+max_tier: tier_2_mid_fantasy
+creature_probability_weights:
+  mundane_wildlife: 0.3
+  corrupted_wildlife: 0.3
+  human_threats: 0.2
+  folklore_entities: 0.2
+flavor_density:
+  level: high
+  common_flavor_creatures:
+    - 倒掛在樹上的狐影
+    - 會說人話的烏鴉
+    - 螢火蟲狀的磷火
+friendly_encounter_chance:
+  enabled: true
+  examples:
+    - 迷路的稚兒妖怪
+    - 施粥的雲遊僧
+environment_modifiers:
+  - 深夜時分妖氣濃度翻倍
+  - 逢魔時刻視覺距離大幅縮減
+named_creature_rumor:
+  exists: true
+  local_name: 白面無臉鬼
+  known_behavior: 徘徊在忘歸橋下，專門詢問路人是否看見他的家鄉。
+  confirmed: false

@@ -1,0 +1,10 @@
+id: onmyo_ryo
+name: 陰陽寮
+summary: 掌握官方天文、曆法與占卜權力的政府機構，負責維護京城的超自然平衡。
+ideology: 以律法與秩序封印混沌。
+public_goal: 消除京城內的妖怪威脅，確保皇室安寧。
+secret_goal: 尋求將強大的古代怨靈武器化，以在政治博弈中徹底壓制藤原氏。
+typical_member_traits:
+  - 傲慢
+  - 精通術語
+  - 階級觀念極重

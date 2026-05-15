@@ -1,0 +1,24 @@
+region_id: uji_river_shores
+region_name: 宇治川畔：怨靈之水
+population_estimate: ~1500
+economy: 茶葉種植, 渡船服務, 漁業
+culture:
+  dominant_traits:
+    - 憂鬱
+    - 感性
+    - 執著於過往
+  common_prejudices:
+    - 對負心人的極端痛恨
+  social_tensions:
+    - 渡船公會與修橋官員的利益衝突
+    - 貴族別墅區與本地漁民間的土地糾紛
+current_status:
+  war_pressure: none
+  food_scarcity: low
+  law_enforcement: moderate
+npc_probability_weights:
+  desperate_people: 0.3
+  opportunists: 0.3
+  loyal_faction_members: 0.2
+  idealists: 0.2
+npc_generation_notes: 與此地 NPC 對話常伴隨著河水的悲鳴與沉重的嘆息。

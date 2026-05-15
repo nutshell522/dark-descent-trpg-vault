@@ -1,0 +1,12 @@
+id: uji_river_shores
+name: 宇治川畔：怨靈之水
+x: 2
+"y": -1
+description: 水流湍急的河流，兩岸種滿了垂柳。傳說中許多投河自盡的怨女化為水妖，在此徘徊不散。
+atmosphere: grim
+danger_level: medium
+notable_locations:
+  - 宇治橋
+  - 橋姬祠
+  - 平等院淨土院
+  - 螢火祭壇

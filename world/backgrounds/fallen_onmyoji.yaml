@@ -1,0 +1,21 @@
+id: fallen_onmyoji
+name: 落魄陰陽師
+description: 曾任職於陰陽寮，卻因政治陷害或觸碰禁忌法術而被除名，如今在民間苟延殘喘。
+anchor:
+  type: faction
+  ref_id: onmyo_ryo
+  relation: 前成員
+stat_priority:
+  - MND
+  - WIL
+specialty_candidates:
+  - 式神驅使術
+  - 五行結界判定
+  - 咒術解讀
+starting_region_hint:
+  - border_village_yamashiro
+equipment_package:
+  - name: 殘破的符咒書
+    description: 記載了基礎咒文但部分頁面已燒毀
+gold: 5
+rations: 3

@@ -1,0 +1,24 @@
+region_id: rashomon_ruins
+region_name: 羅生門與南部荒野
+max_tier: tier_1_low_fantasy
+creature_probability_weights:
+  mundane_wildlife: 0.2
+  corrupted_wildlife: 0.3
+  human_threats: 0.3
+  folklore_entities: 0.2
+flavor_density:
+  level: medium
+  common_flavor_creatures:
+    - 啃食腐肉的野狗
+    - 盤旋的禿鷹
+friendly_encounter_chance:
+  enabled: true
+  examples:
+    - 分食殘羹的孤兒
+environment_modifiers:
+  - 濃郁的腐臭味降低體力消耗抗性
+named_creature_rumor:
+  exists: true
+  local_name: 茨木童子之影
+  known_behavior: 傳聞在深夜撕碎試圖進入大門的武士。
+  confirmed: false

@@ -1,0 +1,14 @@
+id: shinto_sects
+name: 原始神道
+summary: 崇尚自然萬物皆有神靈的古老信仰，強調清淨與禁忌。
+deity: 天照大神與八百萬神
+core_tenets:
+  - 敬畏自然之靈
+  - 拒絕不潔與汙穢
+  - 守護神聖邊界
+taboos:
+  - 在神域內殺生
+  - 觸碰未經淨化的屍體
+typical_believer_traits:
+  - 重視儀式感
+  - 性格堅定

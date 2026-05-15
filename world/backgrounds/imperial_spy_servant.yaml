@@ -1,0 +1,21 @@
+id: imperial_spy_servant
+name: 宮廷密探
+description: 偽裝成卑微的僕從或侍從，專門為權貴在京城內外蒐集骯髒的秘密。
+anchor:
+  type: faction
+  ref_id: imperial_court
+  relation: 受僱者
+stat_priority:
+  - SOC
+  - AGI
+specialty_candidates:
+  - 流言蒐集
+  - 暗處潛伏
+  - 貴族禮儀偽裝
+starting_region_hint:
+  - heian_kyo_inner
+equipment_package:
+  - name: 特製的小型懷刀
+    description: 易於隱藏的鋒利短刀
+gold: 12
+rations: 2

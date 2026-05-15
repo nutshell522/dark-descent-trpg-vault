@@ -1,0 +1,23 @@
+region_id: heian_kyo_inner
+region_name: 平安京：內裡與大內裏
+max_tier: tier_2_mid_fantasy
+creature_probability_weights:
+  mundane_wildlife: 0.5
+  corrupted_wildlife: 0.1
+  human_threats: 0.3
+  folklore_entities: 0.1
+flavor_density:
+  level: low
+  common_flavor_creatures:
+    - 宮廷池塘中的锦鯉
+    - 廊檐下的金絲雀
+friendly_encounter_chance:
+  enabled: false
+  examples: []
+environment_modifiers:
+  - 強大的結界壓制了外來妖氣
+named_creature_rumor:
+  exists: false
+  local_name: null
+  known_behavior: null
+  confirmed: false

@@ -1,0 +1,10 @@
+id: imperial_court
+name: 平安朝廷
+summary: 以天皇為首、藤原氏掌權的最高權力中心，雖表面優雅但內部派系林立。
+ideology: 血統決定權力，禮儀即是正義。
+public_goal: 維持帝國稅收與領土擴張。
+secret_goal: 與北方的荒野天狗達成秘密協議，以妖怪的力量清洗政敵。
+typical_member_traits:
+  - 言詞隱晦
+  - 對美感有偏執
+  - 權力至上

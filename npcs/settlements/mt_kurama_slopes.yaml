@@ -1,0 +1,24 @@
+region_id: mt_kurama_slopes
+region_name: 鞍馬山麓：天狗林
+population_estimate: ~100
+economy: 藥草貿易, 鐵器鍛造, 隱修教育
+culture:
+  dominant_traits:
+    - 傲慢
+    - 崇尚武勇
+    - 重視約定
+  common_prejudices:
+    - 對軟弱京城人的鄙視
+  social_tensions:
+    - 深山天狗勢力與山下僧侶的勢力範圍劃分
+    - 追求力量的武士與守護自然平衡的精靈間的摩擦
+current_status:
+  war_pressure: medium
+  food_scarcity: low
+  law_enforcement: moderate
+npc_probability_weights:
+  desperate_people: 0.1
+  opportunists: 0.2
+  loyal_faction_members: 0.4
+  idealists: 0.3
+npc_generation_notes: NPC 可能具備非凡的武力或超自然的感知力。

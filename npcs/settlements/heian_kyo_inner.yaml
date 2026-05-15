@@ -1,0 +1,25 @@
+region_id: heian_kyo_inner
+region_name: 平安京：內裡與大內裏
+population_estimate: ~10000
+economy: 官僚體系支出, 奢侈品貿易, 賦稅徵收
+culture:
+  dominant_traits:
+    - 優雅且虛偽
+    - 權力至上
+    - 精通和歌
+  common_prejudices:
+    - 對鄉野村夫的蔑視
+    - 對平民階層的恐懼與排斥
+  social_tensions:
+    - 藤原氏與非藤原氏官員間的職位鬥爭
+    - 神官與陰陽師對於祭祀主導權的爭執
+current_status:
+  war_pressure: low
+  food_scarcity: none
+  law_enforcement: strict
+npc_probability_weights:
+  desperate_people: 0.1
+  opportunists: 0.5
+  loyal_faction_members: 0.3
+  idealists: 0.1
+npc_generation_notes: 即使是普通侍從，言談間也充滿了隱喻與政治站隊。

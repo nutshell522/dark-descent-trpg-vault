@@ -1,0 +1,480 @@
+{
+  "world": {
+    "name": "平安百鬼夜行",
+    "summary": "平安時代的京都正處於極致的華美與深沉的腐敗中。朝廷內部的權力鬥爭不斷，而人類積累的怨念在夜晚實體化為百鬼，與陰陽師、僧侶及神官在影中博弈。",
+    "tone": "壓抑、美麗但腐敗、靈異",
+    "magic_level": "medium",
+    "tech_level": "pre-modern",
+    "core_conflict": "朝廷腐敗政治與夜晚肆虐妖怪之間的權力失衡，以及人類怨念實體化造成的災厄。",
+    "core_theme": "階級森嚴、夜晚恐怖、人類政治的醜惡",
+    "current_day": 1
+  },
+  "regions": [
+    {
+      "id": "border_village_yamashiro",
+      "name": "山城國邊境：葛葉村",
+      "x": 0,
+      "y": 0,
+      "description": "位於平安京外圍的山間小村，是京城繁華與荒野妖氣的交界點。村口矗立著破敗的鳥居，入夜後濃霧會吞噬所有進出的路徑。",
+      "atmosphere": "tense",
+      "danger_level": "medium",
+      "notable_locations": ["葛葉神廟遺跡", "忘歸橋", "月影竹林", "村長的焚香屋"],
+      "settlement_seed": {
+        "population_estimate": "~300",
+        "economy": "稻作栽培, 護身符製作, 山產採集",
+        "culture": {
+          "dominant_traits": ["謹小慎微", "迷信", "排外"],
+          "common_prejudices": ["對流浪陰陽師的恐懼", "對京城貴族的隱恨"],
+          "social_tensions": ["村民與借住此地的落魄武士間的糧食爭奪", "老一輩祭司與新興佛教僧侶的教義衝突"]
+        },
+        "current_status": {
+          "war_pressure": "none",
+          "food_scarcity": "medium",
+          "law_enforcement": "low"
+        },
+        "npc_probability_weights": {
+          "desperate_people": 0.4,
+          "opportunists": 0.3,
+          "loyal_faction_members": 0.2,
+          "idealists": 0.1
+        },
+        "npc_generation_notes": "村民說話常帶有禁忌，對外來者會先進行神事占卜。",
+        "ecology_seed": {
+          "max_tier": "tier_2_mid_fantasy",
+          "creature_probability_weights": {
+            "mundane_wildlife": 0.3,
+            "corrupted_wildlife": 0.3,
+            "human_threats": 0.2,
+            "folklore_entities": 0.2
+          },
+          "flavor_density": {
+            "level": "high",
+            "common_flavor_creatures": ["倒掛在樹上的狐影", "會說人話的烏鴉", "螢火蟲狀的磷火"]
+          },
+          "friendly_encounter_chance": {
+            "enabled": true,
+            "examples": ["迷路的稚兒妖怪", "施粥的雲遊僧"]
+          },
+          "environment_modifiers": ["深夜時分妖氣濃度翻倍", "逢魔時刻視覺距離大幅縮減"],
+          "named_creature_rumor": {
+            "exists": true,
+            "local_name": "白面無臉鬼",
+            "known_behavior": "徘徊在忘歸橋下，專門詢問路人是否看見他的家鄉。",
+            "confirmed": false
+          }
+        }
+      }
+    },
+    {
+      "id": "heian_kyo_inner",
+      "name": "平安京：內裡與大內裏",
+      "x": 0,
+      "y": 2,
+      "description": "帝國權力的核心，宮殿雄偉但充斥著沉重的政治壓力。硃紅色的樑柱間隱藏著無數窺視的耳目。",
+      "atmosphere": "grim",
+      "danger_level": "low",
+      "notable_locations": ["紫宸殿", "陰陽寮官署", "神泉苑", "朱雀大路"],
+      "settlement_seed": {
+        "population_estimate": "~10000",
+        "economy": "官僚體系支出, 奢侈品貿易, 賦稅徵收",
+        "culture": {
+          "dominant_traits": ["優雅且虛偽", "權力至上", "精通和歌"],
+          "common_prejudices": ["對鄉野村夫的蔑視", "對平民階層的恐懼與排斥"],
+          "social_tensions": ["藤原氏與非藤原氏官員間的職位鬥爭", "神官與陰陽師對於祭祀主導權的爭執"]
+        },
+        "current_status": {
+          "war_pressure": "low",
+          "food_scarcity": "none",
+          "law_enforcement": "strict"
+        },
+        "npc_probability_weights": {
+          "desperate_people": 0.1,
+          "opportunists": 0.5,
+          "loyal_faction_members": 0.3,
+          "idealists": 0.1
+        },
+        "npc_generation_notes": "即使是普通侍從，言談間也充滿了隱喻與政治站隊。",
+        "ecology_seed": {
+          "max_tier": "tier_2_mid_fantasy",
+          "creature_probability_weights": {
+            "mundane_wildlife": 0.5,
+            "corrupted_wildlife": 0.1,
+            "human_threats": 0.3,
+            "folklore_entities": 0.1
+          },
+          "flavor_density": {
+            "level": "low",
+            "common_flavor_creatures": ["宮廷池塘中的锦鯉", "廊檐下的金絲雀"]
+          },
+          "friendly_encounter_chance": {
+            "enabled": false,
+            "examples": []
+          },
+          "environment_modifiers": ["強大的結界壓制了外來妖氣"],
+          "named_creature_rumor": {
+            "exists": false,
+            "local_name": null,
+            "known_behavior": null,
+            "confirmed": false
+          }
+        }
+      }
+    },
+    {
+      "id": "rashomon_ruins",
+      "name": "羅生門與南部荒野",
+      "x": 0,
+      "y": -2,
+      "description": "京城南端倒塌的大門，門樓上堆滿了無名的屍體。此處是盜賊與低階妖怪的聚居地。",
+      "atmosphere": "desolate",
+      "danger_level": "high",
+      "notable_locations": ["羅生門廢墟", "白骨土丘", "盜賊巢穴", "黑蓮池"],
+      "settlement_seed": {
+        "population_estimate": "~50",
+        "economy": "贓物交易, 屍體掠奪",
+        "culture": {
+          "dominant_traits": ["野蠻", "生存本能", "無視律法"],
+          "common_prejudices": ["對官兵的極端不信任"],
+          "social_tensions": ["流民團夥間的領地爭奪", "飢餓者與妖怪間的捕食關係"]
+        },
+        "current_status": {
+          "war_pressure": "none",
+          "food_scarcity": "famine",
+          "law_enforcement": "absent"
+        },
+        "npc_probability_weights": {
+          "desperate_people": 0.7,
+          "opportunists": 0.2,
+          "loyal_faction_members": 0.0,
+          "idealists": 0.1
+        },
+        "npc_generation_notes": "這裡的人已經失去了文明的裝飾，與野獸無異。",
+        "ecology_seed": {
+          "max_tier": "tier_1_low_fantasy",
+          "creature_probability_weights": {
+            "mundane_wildlife": 0.2,
+            "corrupted_wildlife": 0.3,
+            "human_threats": 0.3,
+            "folklore_entities": 0.2
+          },
+          "flavor_density": {
+            "level": "medium",
+            "common_flavor_creatures": ["啃食腐肉的野狗", "盤旋的禿鷹"]
+          },
+          "friendly_encounter_chance": {
+            "enabled": true,
+            "examples": ["分食殘羹的孤兒"]
+          },
+          "environment_modifiers": ["濃郁的腐臭味降低體力消耗抗性"],
+          "named_creature_rumor": {
+            "exists": true,
+            "local_name": "茨木童子之影",
+            "known_behavior": "傳聞在深夜撕碎試圖進入大門的武士。",
+            "confirmed": false
+          }
+        }
+      }
+    },
+    {
+      "id": "mt_kurama_slopes",
+      "name": "鞍馬山麓：天狗林",
+      "x": -2,
+      "y": 3,
+      "description": "崎嶇的山區，古木參天，相傳是異能者修行之地。山風咆哮時，宛如巨大的羽翼掠過林梢。",
+      "atmosphere": "tense",
+      "danger_level": "high",
+      "notable_locations": ["僧正坊岩", "奧之院魔王殿", "紅葉瀑布", "隱修者草廬"],
+      "settlement_seed": {
+        "population_estimate": "~100",
+        "economy": "藥草貿易, 鐵器鍛造, 隱修教育",
+        "culture": {
+          "dominant_traits": ["傲慢", "崇尚武勇", "重視約定"],
+          "common_prejudices": ["對軟弱京城人的鄙視"],
+          "social_tensions": ["深山天狗勢力與山下僧侶的勢力範圍劃分", "追求力量的武士與守護自然平衡的精靈間的摩擦"]
+        },
+        "current_status": {
+          "war_pressure": "medium",
+          "food_scarcity": "low",
+          "law_enforcement": "moderate"
+        },
+        "npc_probability_weights": {
+          "desperate_people": 0.1,
+          "opportunists": 0.2,
+          "loyal_faction_members": 0.4,
+          "idealists": 0.3
+        },
+        "npc_generation_notes": "NPC 可能具備非凡的武力或超自然的感知力。",
+        "ecology_seed": {
+          "max_tier": "tier_2_mid_fantasy",
+          "creature_probability_weights": {
+            "mundane_wildlife": 0.2,
+            "corrupted_wildlife": 0.2,
+            "human_threats": 0.1,
+            "folklore_entities": 0.5
+          },
+          "flavor_density": {
+            "level": "medium",
+            "common_flavor_creatures": ["紅臉的獼猴", "巨大的深山鴞"]
+          },
+          "friendly_encounter_chance": {
+            "enabled": true,
+            "examples": ["指點迷津的鴉天狗學童"]
+          },
+          "environment_modifiers": ["陡峭地形大幅增加敏捷判定難度"],
+          "named_creature_rumor": {
+            "exists": true,
+            "local_name": "鞍馬大天狗",
+            "known_behavior": "坐在最高的古杉頂端，俯瞰整個平安京。",
+            "confirmed": false
+          }
+        }
+      }
+    },
+    {
+      "id": "uji_river_shores",
+      "name": "宇治川畔：怨靈之水",
+      "x": 2,
+      "y": -1,
+      "description": "水流湍急的河流，兩岸種滿了垂柳。傳說中許多投河自盡的怨女化為水妖，在此徘徊不散。",
+      "atmosphere": "grim",
+      "danger_level": "medium",
+      "notable_locations": ["宇治橋", "橋姬祠", "平等院淨土院", "螢火祭壇"],
+      "settlement_seed": {
+        "population_estimate": "~1500",
+        "economy": "茶葉種植, 渡船服務, 漁業",
+        "culture": {
+          "dominant_traits": ["憂鬱", "感性", "執著於過往"],
+          "common_prejudices": ["對負心人的極端痛恨"],
+          "social_tensions": ["渡船公會與修橋官員的利益衝突", "貴族別墅區與本地漁民間的土地糾紛"]
+        },
+        "current_status": {
+          "war_pressure": "none",
+          "food_scarcity": "low",
+          "law_enforcement": "moderate"
+        },
+        "npc_probability_weights": {
+          "desperate_people": 0.3,
+          "opportunists": 0.3,
+          "loyal_faction_members": 0.2,
+          "idealists": 0.2
+        },
+        "npc_generation_notes": "與此地 NPC 對話常伴隨著河水的悲鳴與沉重的嘆息。",
+        "ecology_seed": {
+          "max_tier": "tier_1_low_fantasy",
+          "creature_probability_weights": {
+            "mundane_wildlife": 0.4,
+            "corrupted_wildlife": 0.3,
+            "human_threats": 0.1,
+            "folklore_entities": 0.2
+          },
+          "flavor_density": {
+            "level": "medium",
+            "common_flavor_creatures": ["閃爍的水靈", "巨大的鯰魚"]
+          },
+          "friendly_encounter_chance": {
+            "enabled": true,
+            "examples": ["指引正確河道的螢火蟲"]
+          },
+          "environment_modifiers": ["水域戰鬥中行動受限"],
+          "named_creature_rumor": {
+            "exists": true,
+            "local_name": "宇治橋姬",
+            "known_behavior": "深夜時分在橋頭哭泣，會將帶著嫉妒心的路人拉入河底。",
+            "confirmed": false
+          }
+        }
+      }
+    }
+  ],
+  "races": [
+    {
+      "id": "heian_human",
+      "name": "平安人類",
+      "appearance_traits": ["身穿層次複雜的絲織和服", "面部塗抹白粉與染黑的牙齒", "隨身攜帶摺扇或配刀"],
+      "cultural_defaults": ["極度重視禮儀與地位", "相信言靈的力量", "行為深受禁忌與方位學影響"],
+      "common_prejudices_against_them": ["被妖怪視為軟弱但美味的獵物", "被天狗視為虛偽的生物"],
+      "typical_social_class": "社會主體，從貴族到賤民",
+      "stat_modifier_hint": null,
+      "npc_generation_notes": "會因為一個不吉利的詞彙而中斷所有對話。"
+    },
+    {
+      "id": "hanyou_exile",
+      "name": "半妖流亡者",
+      "appearance_traits": ["隱約可見的狐耳或鱗片", "異色的瞳孔", "常穿戴寬大的斗篷以遮掩特徵"],
+      "cultural_defaults": ["在夾縫中生存的實用主義者", "對血緣有強烈且複雜的執著"],
+      "common_prejudices_against_them": ["人類視其為不詳的怪物", "純種妖怪視其為汙穢的雜種"],
+      "typical_social_class": "社會邊緣人、傭兵或密探",
+      "stat_modifier_hint": null,
+      "npc_generation_notes": "對人的善意極度警惕，常以冷漠武裝自己。"
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "fallen_onmyoji",
+      "name": "落魄陰陽師",
+      "description": "曾任職於陰陽寮，卻因政治陷害或觸碰禁忌法術而被除名，如今在民間苟延殘喘。",
+      "anchor": {
+        "type": "faction",
+        "ref_id": "onmyo_ryo",
+        "relation": "前成員"
+      },
+      "stat_priority": ["MND", "WIL"],
+      "specialty_candidates": ["式神驅使術", "五行結界判定", "咒術解讀"],
+      "starting_region_hint": ["border_village_yamashiro"],
+      "equipment_package": [
+        {
+          "name": "殘破的符咒書",
+          "description": "記載了基礎咒文但部分頁面已燒毀"
+        }
+      ],
+      "gold": 5,
+      "rations": 3
+    },
+    {
+      "id": "imperial_spy_servant",
+      "name": "宮廷密探",
+      "description": "偽裝成卑微的僕從或侍從，專門為權貴在京城內外蒐集骯髒的秘密。",
+      "anchor": {
+        "type": "faction",
+        "ref_id": "imperial_court",
+        "relation": "受僱者"
+      },
+      "stat_priority": ["SOC", "AGI"],
+      "specialty_candidates": ["流言蒐集", "暗處潛伏", "貴族禮儀偽裝"],
+      "starting_region_hint": ["heian_kyo_inner"],
+      "equipment_package": [
+        {
+          "name": "特製的小型懷刀",
+          "description": "易於隱藏的鋒利短刀"
+        }
+      ],
+      "gold": 12,
+      "rations": 2
+    },
+    {
+      "id": "shrine_maiden_of_ruins",
+      "name": "廢墟巫女",
+      "description": "守護著已被世人遺忘的破碎神廟，聽取荒神與怨靈的低語。",
+      "anchor": {
+        "type": "religion",
+        "ref_id": "shinto_sects",
+        "relation": "邊緣守護者"
+      },
+      "stat_priority": ["WIL", "MND"],
+      "specialty_candidates": ["荒神安撫儀式", "靈體溝通", "草藥醫療"],
+      "starting_region_hint": ["border_village_yamashiro", "rashomon_ruins"],
+      "equipment_package": [
+        {
+          "name": "舊化的神樂鈴",
+          "description": "搖動時能發出清脆的靈性共鳴"
+        }
+      ],
+      "gold": 4,
+      "rations": 5
+    }
+  ],
+  "factions": [
+    {
+      "id": "onmyo_ryo",
+      "name": "陰陽寮",
+      "summary": "掌握官方天文、曆法與占卜權力的政府機構，負責維護京城的超自然平衡。",
+      "ideology": "以律法與秩序封印混沌。",
+      "public_goal": "消除京城內的妖怪威脅，確保皇室安寧。",
+      "secret_goal": "尋求將強大的古代怨靈武器化，以在政治博弈中徹底壓制藤原氏。",
+      "typical_member_traits": ["傲慢", "精通術語", "階級觀念極重"]
+    },
+    {
+      "id": "imperial_court",
+      "name": "平安朝廷",
+      "summary": "以天皇為首、藤原氏掌權的最高權力中心，雖表面優雅但內部派系林立。",
+      "ideology": "血統決定權力，禮儀即是正義。",
+      "public_goal": "維持帝國稅收與領土擴張。",
+      "secret_goal": "與北方的荒野天狗達成秘密協議，以妖怪的力量清洗政敵。",
+      "typical_member_traits": ["言詞隱晦", "對美感有偏執", "權力至上"]
+    },
+    {
+      "id": "night_parade_remnants",
+      "name": "百鬼夜行之遺",
+      "summary": "由各路妖怪組成的鬆散聯盟，受強大妖力吸引，試圖在夜晚接管世界。",
+      "ideology": "夜晚是我們的領土，恐懼是我們的食糧。",
+      "public_goal": "推翻人類對土地的佔領，恢復妖之世。",
+      "secret_goal": "尋找被封印的「鬼門關鍵」，釋放足以吞噬京都的終極怨念。",
+      "typical_member_traits": ["反覆無常", "殘忍", "遵守妖異契約"]
+    }
+  ],
+  "religions": [
+    {
+      "id": "shinto_sects",
+      "name": "原始神道",
+      "summary": "崇尚自然萬物皆有神靈的古老信仰，強調清淨與禁忌。",
+      "deity": "天照大神與八百萬神",
+      "core_tenets": ["敬畏自然之靈", "拒絕不潔與汙穢", "守護神聖邊界"],
+      "taboos": ["在神域內殺生", "觸碰未經淨化的屍體"],
+      "typical_believer_traits": ["重視儀式感", "性格堅定"]
+    },
+    {
+      "id": "heian_buddhism",
+      "name": "密教佛教",
+      "summary": "從海外傳入並與本土文化融合的強大宗教，擅長以曼荼羅與真言驅魔。",
+      "deity": "大日如來",
+      "core_tenets": ["眾生皆苦，唯佛可渡", "透過苦修獲得超越性的力量", "因果報應不可逃避"],
+      "taboos": ["破壞僧侶的法器", "對佛法不敬"],
+      "typical_believer_traits": ["慈悲但嚴厲", "善於說教"]
+    }
+  ],
+  "relations": {
+    "region_faction": [
+      {
+        "region_id": "heian_kyo_inner",
+        "faction_id": "onmyo_ryo",
+        "control_type": "controls"
+      },
+      {
+        "region_id": "heian_kyo_inner",
+        "faction_id": "imperial_court",
+        "control_type": "controls"
+      },
+      {
+        "region_id": "rashomon_ruins",
+        "faction_id": "night_parade_remnants",
+        "control_type": "influences"
+      },
+      {
+        "region_id": "mt_kurama_slopes",
+        "faction_id": "imperial_court",
+        "control_type": "opposes"
+      }
+    ],
+    "region_religion": [
+      {
+        "region_id": "heian_kyo_inner",
+        "religion_id": "shinto_sects",
+        "type": "state_religion"
+      },
+      {
+        "region_id": "uji_river_shores",
+        "religion_id": "heian_buddhism",
+        "type": "tolerated"
+      }
+    ]
+  },
+  "initial_state": {
+    "world_flags": {
+      "great_plague_of_yore": true,
+      "seal_of_rashomon_broken": false,
+      "fujiwara_power_monopoly": true
+    },
+    "region_overrides": [
+      {
+        "region_id": "rashomon_ruins",
+        "controlled_by": null,
+        "population_status": "devastated"
+      },
+      {
+        "region_id": "border_village_yamashiro",
+        "controlled_by": null,
+        "population_status": "declining"
+      }
+    ]
+  }
+}

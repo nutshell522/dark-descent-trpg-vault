@@ -1,0 +1,24 @@
+region_id: uji_river_shores
+region_name: 宇治川畔：怨靈之水
+max_tier: tier_1_low_fantasy
+creature_probability_weights:
+  mundane_wildlife: 0.4
+  corrupted_wildlife: 0.3
+  human_threats: 0.1
+  folklore_entities: 0.2
+flavor_density:
+  level: medium
+  common_flavor_creatures:
+    - 閃爍的水靈
+    - 巨大的鯰魚
+friendly_encounter_chance:
+  enabled: true
+  examples:
+    - 指引正確河道的螢火蟲
+environment_modifiers:
+  - 水域戰鬥中行動受限
+named_creature_rumor:
+  exists: true
+  local_name: 宇治橋姬
+  known_behavior: 深夜時分在橋頭哭泣，會將帶著嫉妒心的路人拉入河底。
+  confirmed: false

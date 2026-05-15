@@ -1,0 +1,10 @@
+id: night_parade_remnants
+name: 百鬼夜行之遺
+summary: 由各路妖怪組成的鬆散聯盟，受強大妖力吸引，試圖在夜晚接管世界。
+ideology: 夜晚是我們的領土，恐懼是我們的食糧。
+public_goal: 推翻人類對土地的佔領，恢復妖之世。
+secret_goal: 尋找被封印的「鬼門關鍵」，釋放足以吞噬京都的終極怨念。
+typical_member_traits:
+  - 反覆無常
+  - 殘忍
+  - 遵守妖異契約

@@ -1,0 +1,22 @@
+id: shrine_maiden_of_ruins
+name: 廢墟巫女
+description: 守護著已被世人遺忘的破碎神廟，聽取荒神與怨靈的低語。
+anchor:
+  type: religion
+  ref_id: shinto_sects
+  relation: 邊緣守護者
+stat_priority:
+  - WIL
+  - MND
+specialty_candidates:
+  - 荒神安撫儀式
+  - 靈體溝通
+  - 草藥醫療
+starting_region_hint:
+  - border_village_yamashiro
+  - rashomon_ruins
+equipment_package:
+  - name: 舊化的神樂鈴
+    description: 搖動時能發出清脆的靈性共鳴
+gold: 4
+rations: 5

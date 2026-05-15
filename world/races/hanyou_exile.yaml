@@ -1,0 +1,15 @@
+id: hanyou_exile
+name: 半妖流亡者
+appearance_traits:
+  - 隱約可見的狐耳或鱗片
+  - 異色的瞳孔
+  - 常穿戴寬大的斗篷以遮掩特徵
+cultural_defaults:
+  - 在夾縫中生存的實用主義者
+  - 對血緣有強烈且複雜的執著
+common_prejudices_against_them:
+  - 人類視其為不詳的怪物
+  - 純種妖怪視其為汙穢的雜種
+typical_social_class: 社會邊緣人、傭兵或密探
+stat_modifier_hint: null
+npc_generation_notes: 對人的善意極度警惕，常以冷漠武裝自己。

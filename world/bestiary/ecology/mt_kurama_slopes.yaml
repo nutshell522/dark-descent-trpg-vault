@@ -1,0 +1,24 @@
+region_id: mt_kurama_slopes
+region_name: 鞍馬山麓：天狗林
+max_tier: tier_2_mid_fantasy
+creature_probability_weights:
+  mundane_wildlife: 0.2
+  corrupted_wildlife: 0.2
+  human_threats: 0.1
+  folklore_entities: 0.5
+flavor_density:
+  level: medium
+  common_flavor_creatures:
+    - 紅臉的獼猴
+    - 巨大的深山鴞
+friendly_encounter_chance:
+  enabled: true
+  examples:
+    - 指點迷津的鴉天狗學童
+environment_modifiers:
+  - 陡峭地形大幅增加敏捷判定難度
+named_creature_rumor:
+  exists: true
+  local_name: 鞍馬大天狗
+  known_behavior: 坐在最高的古杉頂端，俯瞰整個平安京。
+  confirmed: false

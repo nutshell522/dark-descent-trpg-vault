@@ -1,0 +1,12 @@
+id: mt_kurama_slopes
+name: 鞍馬山麓：天狗林
+x: -2
+"y": 3
+description: 崎嶇的山區，古木參天，相傳是異能者修行之地。山風咆哮時，宛如巨大的羽翼掠過林梢。
+atmosphere: tense
+danger_level: high
+notable_locations:
+  - 僧正坊岩
+  - 奧之院魔王殿
+  - 紅葉瀑布
+  - 隱修者草廬

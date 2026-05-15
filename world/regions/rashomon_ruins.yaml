@@ -1,0 +1,12 @@
+id: rashomon_ruins
+name: 羅生門與南部荒野
+x: 0
+"y": -2
+description: 京城南端倒塌的大門，門樓上堆滿了無名的屍體。此處是盜賊與低階妖怪的聚居地。
+atmosphere: desolate
+danger_level: high
+notable_locations:
+  - 羅生門廢墟
+  - 白骨土丘
+  - 盜賊巢穴
+  - 黑蓮池

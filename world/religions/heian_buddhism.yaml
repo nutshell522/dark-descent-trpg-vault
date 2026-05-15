@@ -1,0 +1,14 @@
+id: heian_buddhism
+name: 密教佛教
+summary: 從海外傳入並與本土文化融合的強大宗教，擅長以曼荼羅與真言驅魔。
+deity: 大日如來
+core_tenets:
+  - 眾生皆苦，唯佛可渡
+  - 透過苦修獲得超越性的力量
+  - 因果報應不可逃避
+taboos:
+  - 破壞僧侶的法器
+  - 對佛法不敬
+typical_believer_traits:
+  - 慈悲但嚴厲
+  - 善於說教

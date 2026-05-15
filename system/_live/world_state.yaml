@@ -1,0 +1,72 @@
+global_time:
+  current_date: Year1_Day_1
+  current_season: 待設定
+  moon_cycle: 待設定
+  days_since_campaign_start: 0
+travel_time_reference: "待填寫（例：地區A_to_地區B: 8_days_on_foot）"
+active_global_events:
+  - id: evt_001
+    name: great_plague_of_yore
+    start_date: Year1_Day_1
+    status: ongoing
+    affected_regions: []
+  - id: evt_002
+    name: fujiwara_power_monopoly
+    start_date: Year1_Day_1
+    status: ongoing
+    affected_regions: []
+resolution_map:
+  high_detail:
+    - region: 山城國邊境：葛葉村
+      region_id: border_village_yamashiro
+      detail_level: full
+      active_npcs: []
+      local_events: []
+  abstract_state:
+    - region: 平安京：內裡與大內裏
+      region_id: heian_kyo_inner
+      status: grim
+      last_updated: Year1_Day_1
+      player_relevance: low
+    - region: 羅生門與南部荒野
+      region_id: rashomon_ruins
+      status: desolate
+      last_updated: Year1_Day_1
+      player_relevance: low
+    - region: 鞍馬山麓：天狗林
+      region_id: mt_kurama_slopes
+      status: tense
+      last_updated: Year1_Day_1
+      player_relevance: low
+    - region: 宇治川畔：怨靈之水
+      region_id: uji_river_shores
+      status: grim
+      last_updated: Year1_Day_1
+      player_relevance: low
+region_status:
+  - region_id: border_village_yamashiro
+    region_name: 山城國邊境：葛葉村
+    controlled_by: null
+    population_status: declining
+    current_atmosphere: tense
+  - region_id: heian_kyo_inner
+    region_name: 平安京：內裡與大內裏
+    controlled_by: null
+    population_status: stable
+    current_atmosphere: grim
+  - region_id: rashomon_ruins
+    region_name: 羅生門與南部荒野
+    controlled_by: null
+    population_status: devastated
+    current_atmosphere: desolate
+  - region_id: mt_kurama_slopes
+    region_name: 鞍馬山麓：天狗林
+    controlled_by: null
+    population_status: stable
+    current_atmosphere: tense
+  - region_id: uji_river_shores
+    region_name: 宇治川畔：怨靈之水
+    controlled_by: null
+    population_status: stable
+    current_atmosphere: grim
+information_delay_rule: 遠方事件的情報抵達時間 = 距離(天) × 1.5，傳遞過程中必然失真，距離越遠失真越高。

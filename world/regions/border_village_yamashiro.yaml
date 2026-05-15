@@ -1,0 +1,12 @@
+id: border_village_yamashiro
+name: 山城國邊境：葛葉村
+x: 0
+"y": 0
+description: 位於平安京外圍的山間小村，是京城繁華與荒野妖氣的交界點。村口矗立著破敗的鳥居，入夜後濃霧會吞噬所有進出的路徑。
+atmosphere: tense
+danger_level: medium
+notable_locations:
+  - 葛葉神廟遺跡
+  - 忘歸橋
+  - 月影竹林
+  - 村長的焚香屋

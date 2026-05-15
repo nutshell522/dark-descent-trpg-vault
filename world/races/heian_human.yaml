@@ -1,0 +1,16 @@
+id: heian_human
+name: 平安人類
+appearance_traits:
+  - 身穿層次複雜的絲織和服
+  - 面部塗抹白粉與染黑的牙齒
+  - 隨身攜帶摺扇或配刀
+cultural_defaults:
+  - 極度重視禮儀與地位
+  - 相信言靈的力量
+  - 行為深受禁忌與方位學影響
+common_prejudices_against_them:
+  - 被妖怪視為軟弱但美味的獵物
+  - 被天狗視為虛偽的生物
+typical_social_class: 社會主體，從貴族到賤民
+stat_modifier_hint: null
+npc_generation_notes: 會因為一個不吉利的詞彙而中斷所有對話。

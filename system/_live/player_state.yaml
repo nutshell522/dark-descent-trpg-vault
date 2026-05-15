@@ -1,0 +1,26 @@
+_note: 角色當前狀態。請在建立角色後填入數值，之後由 tools/apply-delta.ts 自動更新。
+_kb_instruction: 此檔案需上傳至 Claude Project KB，每次結算後替換新版本。
+name: （請填入角色名稱）
+race: （請填入種族）
+background: （請填入背景）
+stats:
+  PHY: 0
+  AGI: 0
+  MND: 0
+  SOC: 0
+  WIL: 0
+  _note: 分配 5 點，每個屬性 -2 到 +3
+body_clock: 0/4
+mind_clock: 0/4
+injuries: []
+trauma: []
+personal_weakness: （玩家自訂：什麼情況會觸發精神時鐘）
+resources:
+  food_days_remaining: 3
+  medicine_units: 2
+  ammo_or_arrows: 0
+reputation: {}
+inventory: []
+known_secrets: []
+permanent_changes: []
+last_updated: 初始化 / Year1_Day_1

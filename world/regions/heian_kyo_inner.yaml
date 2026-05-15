@@ -1,0 +1,12 @@
+id: heian_kyo_inner
+name: 平安京：內裡與大內裏
+x: 0
+"y": 2
+description: 帝國權力的核心，宮殿雄偉但充斥著沉重的政治壓力。硃紅色的樑柱間隱藏著無數窺視的耳目。
+atmosphere: grim
+danger_level: low
+notable_locations:
+  - 紫宸殿
+  - 陰陽寮官署
+  - 神泉苑
+  - 朱雀大路

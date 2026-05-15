@@ -1,0 +1,25 @@
+region_id: border_village_yamashiro
+region_name: 山城國邊境：葛葉村
+population_estimate: ~300
+economy: 稻作栽培, 護身符製作, 山產採集
+culture:
+  dominant_traits:
+    - 謹小慎微
+    - 迷信
+    - 排外
+  common_prejudices:
+    - 對流浪陰陽師的恐懼
+    - 對京城貴族的隱恨
+  social_tensions:
+    - 村民與借住此地的落魄武士間的糧食爭奪
+    - 老一輩祭司與新興佛教僧侶的教義衝突
+current_status:
+  war_pressure: none
+  food_scarcity: medium
+  law_enforcement: low
+npc_probability_weights:
+  desperate_people: 0.4
+  opportunists: 0.3
+  loyal_faction_members: 0.2
+  idealists: 0.1
+npc_generation_notes: 村民說話常帶有禁忌，對外來者會先進行神事占卜。

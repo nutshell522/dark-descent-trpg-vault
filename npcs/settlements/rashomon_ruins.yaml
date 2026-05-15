@@ -1,0 +1,24 @@
+region_id: rashomon_ruins
+region_name: 羅生門與南部荒野
+population_estimate: ~50
+economy: 贓物交易, 屍體掠奪
+culture:
+  dominant_traits:
+    - 野蠻
+    - 生存本能
+    - 無視律法
+  common_prejudices:
+    - 對官兵的極端不信任
+  social_tensions:
+    - 流民團夥間的領地爭奪
+    - 飢餓者與妖怪間的捕食關係
+current_status:
+  war_pressure: none
+  food_scarcity: famine
+  law_enforcement: absent
+npc_probability_weights:
+  desperate_people: 0.7
+  opportunists: 0.2
+  loyal_faction_members: 0
+  idealists: 0.1
+npc_generation_notes: 這裡的人已經失去了文明的裝飾，與野獸無異。
