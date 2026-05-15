@@ -1,0 +1,345 @@
+# rules.yaml
+# Dark Descent TRPG — 核心規則系統
+# 版本：1.0
+# 此檔案放入 Claude Project Knowledge Base，Claude 在裁定判定時必須遵守。
+
+# ═══════════════════════════════════════════════════════
+# 一、骰子系統
+# ═══════════════════════════════════════════════════════
+
+dice_system:
+  base: 2D6
+  modifier_source: 對應屬性值（-2 到 +3）
+  formula: "擲 2D6 + 屬性修正值 = 最終結果"
+
+  result_tiers:
+    success:
+      range: "10+"
+      description: 你做到了，沒有不必要的代價
+      gm_action: 玩家得到想要的，敘事向前推進
+
+    partial_success:
+      range: "7-9"
+      description: 你做到了，但付出代價或情況變得更複雜
+      gm_action: |
+        從以下選一個代價（選最戲劇化的）：
+        - 損失資源（HP 格、物品、情報）
+        - 引發新威脅（有人注意到你、時間壓力升高）
+        - 留下後遺症（受傷、暴露身份、欠人情）
+        - 只達成目標的一部分
+
+    failure:
+      range: "6-"
+      description: 你沒有做到，而且情勢惡化
+      gm_action: |
+        GM 推進情勢，不是「什麼都沒發生」：
+        - 敵人行動
+        - 資源損失
+        - 新的危機出現
+        - 時間窗口關閉
+
+  critical_rules:
+    double_six:
+      trigger: 骰出兩個 6（骰面結果，非最終總值）
+      effect: 成功且額外獲得一個意外收穫（由 GM 決定內容）
+      note: 僅在 10+ 的情況下觸發，若修正值極低仍可能落在 7-9
+
+    double_one:
+      trigger: 骰出兩個 1（骰面結果，非最終總值）
+      effect: 失敗且觸發一個立即的意外麻煩（GM 決定）
+      note: 固定觸發，不受修正值影響
+
+# ═══════════════════════════════════════════════════════
+# 二、核心屬性
+# ═══════════════════════════════════════════════════════
+
+attributes:
+  range: "-2 到 +3"
+  total_points_at_creation: 5
+  max_single: 3
+  min_single: -2
+
+  stat_list:
+    physique:
+      name: 體魄
+      abbr: PHY
+      covers:
+        - 近身衝突、制伏、承受傷害
+        - 體力消耗、長途跋涉
+        - 強行破門、搬移重物
+      does_not_cover:
+        - 速度與靈活（敏捷）
+        - 忍耐恐懼（意志）
+
+    agility:
+      name: 敏捷
+      abbr: AGI
+      covers:
+        - 迴避攻擊、撤退
+        - 潛行、跟蹤、攀爬
+        - 精細動作（鎖匠、手術、扒竊）
+      does_not_cover:
+        - 暴力衝突（體魄）
+        - 反應直覺（心智）
+
+    mind:
+      name: 心智
+      abbr: MND
+      covers:
+        - 分析、推理、記憶
+        - 調查場景、閱讀線索
+        - 使用知識（醫療、魔法、歷史）
+        - 感知欺騙或危險
+      does_not_cover:
+        - 情緒抵抗（意志）
+        - 說服他人（社交）
+
+    social:
+      name: 社交
+      abbr: SOC
+      covers:
+        - 說服、談判、威嚇
+        - 謊言、偽裝、誘惑
+        - 建立或破壞關係
+        - 讀懂他人情緒與意圖
+      does_not_cover:
+        - 抵抗被操弄（意志）
+        - 分析資訊（心智）
+
+    will:
+      name: 意志
+      abbr: WIL
+      covers:
+        - 抵抗恐懼、恐慌、崩潰
+        - 忍耐痛苦與折磨
+        - 對抗心理操控
+        - 在壓力下保持冷靜
+        - 精神壓力的直接抵抗骰
+      does_not_cover:
+        - 主動社交行為（社交）
+        - 傷害承受（體魄）
+
+# ═══════════════════════════════════════════════════════
+# 三、衝突主軸
+# ═══════════════════════════════════════════════════════
+
+conflict_axes:
+  physical_conflict:
+    label: 肉體衝突
+    primary_stats: [physique, agility]
+    examples: 戰鬥、追逐、逃跑、潛入
+
+  mental_conflict:
+    label: 調查與心智
+    primary_stats: [mind, will]
+    examples: 解謎、調查、抵抗幻覺、使用知識
+
+  social_conflict:
+    label: 社交博弈
+    primary_stats: [social, will]
+    examples: 談判、欺騙、審訊、情報交換
+
+  environmental_conflict:
+    label: 環境對抗
+    primary_stats: [agility, physique]
+    examples: 惡劣天氣、地形、生存、時間壓力
+
+# ═══════════════════════════════════════════════════════
+# 四、傷害系統（雙軌時鐘）
+# ═══════════════════════════════════════════════════════
+
+damage_system:
+
+  body_clock:
+    label: 肉體時鐘
+    slots: 4
+    slot_labels:
+      1: 輕傷（瘀傷、擦傷、疲憊）
+      2: 中傷（出血、骨裂、行動受限）
+      3: 重傷（無法全力戰鬥，行動受限加重）
+      4: 危急（瀕死）
+
+    fill_rules:
+      normal_hit: 填入 1 格
+      heavy_hit: 填入 2 格（GM 宣告）
+      lethal_hit: 填入 3 格（GM 宣告，要害攻擊或大型武器）
+
+    crisis_state:
+      trigger: 第 4 格被填入
+      label: 瀕死狀態
+      effect: |
+        每個重大場景結束後擲體魄（2D6+PHY）：
+          10+ → 撐過去，維持瀕死但穩定
+          7-9 → 情況惡化，GM 加入併發症（感染、失血加速）
+          6-  → 死亡，除非當場景內有人執行醫療行動
+      penalty: 瀕死期間所有判定 -1
+
+    healing:
+      in_scene: "心智判定 7+，移除 1 格輕傷或中傷"
+      between_scene: "休息一整天：自動移除 1 格輕傷"
+      long_rest: "一週療養：移除所有輕傷與中傷，重傷移除 1 格"
+      permanent: 某些傷害標記為永久（斷肢、失明），不可移除
+
+  mind_clock:
+    label: 精神時鐘
+    slots: 4
+    slot_labels:
+      1: 壓力（緊張、專注力下降、輕微偏執）
+      2: 動搖（恐慌反應、判斷力受損、睡眠障礙）
+      3: 崩裂（解離、強迫行為、無法信任他人）
+      4: 危急（失控，角色行為由 GM 決定一個場景）
+
+    fill_triggers:
+      - 目睹同伴死亡或重傷
+      - 面對無法理解的超自然現象
+      - 受到心理折磨或長期孤立
+      - 在道德紅線前做出違背自身信念的選擇
+      - 失去重要的人或物
+
+    crisis_state:
+      trigger: 第 4 格被填入
+      label: 精神危機
+      effect: |
+        本場景 GM 可宣告角色的一個衝動行為：
+        - 逃跑、攻擊盟友、崩潰哭泣
+        - 說出不該說的事
+        - 做出違背計畫的決定
+        玩家可用意志判定（10+）否決 GM 的一個宣告（每場景一次）
+
+    healing:
+      short_term: "安全環境休息、社交支持、有效完成目標 → 移除 1 格"
+      long_term: "多個 Session 之間的休養與關係修復"
+      permanent_loss:
+        rule: 精神危機觸發次數累積，每次危機後精神時鐘有效容量可能永久 -1
+        edge_state: 容量降至 1 時進入「邊緣狀態」，意志判定永久 -1
+
+    note: 精神壓力為通用機制，觸發條件由各劇本模組自訂，不預設特定類型
+
+# ═══════════════════════════════════════════════════════
+# 五、判定框架
+# ═══════════════════════════════════════════════════════
+
+judgment_framework:
+
+  when_to_roll:
+    three_conditions:
+      - 結果不確定（成功和失敗都是可能的）
+      - 失敗有實質代價（不只是「再試一次」）
+      - 現在的結果對故事有影響
+    never_roll_for:
+      - 結果明顯的事（關燈、說話、正常移動）
+      - 玩家只是在探索而非承擔風險
+      - 失敗不會推進任何東西
+
+  difficulty_modifiers:
+    default: 無修正
+    hard: -1（環境惡劣或對手強大，GM 必須在擲骰前宣告）
+    very_hard: -2（罕見情況，GM 必須在擲骰前宣告）
+    aided: +1（有人協助、有合適工具、充足準備）
+
+  opposed_rolls:
+    rule: 雙方各擲一次，比較最終結果，高者勝
+    tie: 平手時情況維持，但雙方都付出小代價
+
+  npc_rolls:
+    rule: NPC 通常不擲骰，GM 直接宣告行動
+    exception: 只有玩家主動對抗 NPC 時才觸發判定
+
+# ═══════════════════════════════════════════════════════
+# 六、戰鬥框架
+# ═══════════════════════════════════════════════════════
+
+combat_framework:
+
+  turn_structure: 無嚴格回合順序，依敘事流動進行
+  initiative: 場景開始時 GM 宣告誰有先機
+
+  attack_resolution:
+    melee: "2D6+PHY（或 AGI 若強調技巧）"
+    ranged: "2D6+AGI，遠距或遮蔽物施加 -1 到 -2"
+    social_assault: "2D6+SOC，目標用意志抵抗，失敗填精神時鐘 1 格"
+
+  damage_by_result:
+    success_10plus: 填對方 1 格時鐘
+    partial_7to9: 雙方互填 1 格（攻擊者也受傷）
+    failure_6minus: 攻擊者填 1 格，對手反擊
+
+  npc_durability:
+    ordinary: 2-3 次有效攻擊倒下
+    elite: 4-5 次
+    boss: 依劇情決定
+
+  retreat:
+    rule: 撤退不需要判定
+    cost: 敵人獲得一次免費攻擊，或放棄一樣東西（物品/情報/盟友）
+
+# ═══════════════════════════════════════════════════════
+# 七、NPC 修正值參考
+# ═══════════════════════════════════════════════════════
+
+npc_modifiers:
+  ordinary_npc: 0
+  skilled_npc: +1
+  expert_npc: +2
+  exceptional_npc: +3
+
+# ═══════════════════════════════════════════════════════
+# 八、特殊情況
+# ═══════════════════════════════════════════════════════
+
+special_cases:
+
+  helping:
+    rule: 協助者在場且承擔風險，行動者 +1，協助者不另擲骰
+
+  preparation:
+    rule: 具體的準備行動（消耗資源或時間）給予 +1
+
+  desperate_action:
+    rule: 瀕死或極端壓力下可宣告「拼死一搏」
+    effect: 結果只有 10+ 或 6-，不存在 7-9
+    cost: 無論結果，填精神時鐘 1 格
+
+  extended_challenge:
+    rule: 複雜任務拆成多次判定
+    structure: "設定目標：達成 X 次成功，失敗 Y 次則觸發後果"
+    partial_note: 部分成功（7-9）算半次成功
+
+# ═══════════════════════════════════════════════════════
+# 九、角色建立
+# ═══════════════════════════════════════════════════════
+
+character_creation:
+  steps:
+    1: 分配 5 點給五個屬性（最高 +3，最低 -2）
+    2: 肉體時鐘 4 格（全空）
+    3: 精神時鐘 4 格（全空）
+    4: 決定背景（影響 RP，不影響數值）
+    5: 決定個人弱點（玩家自訂的精神時鐘觸發條件）
+
+  starting_loadout:
+    equipment: 2-3 件符合背景的物品
+    connections: 1-2 個 NPC 關係
+
+  example_builds:
+    scout:
+      stats: "PHY+1 / AGI+3 / MND+1 / SOC+0 / WIL+0"
+    investigator:
+      stats: "PHY-1 / AGI+0 / MND+3 / SOC+2 / WIL+1"
+    enforcer:
+      stats: "PHY+3 / AGI+1 / MND+0 / SOC-1 / WIL+2"
+
+# ═══════════════════════════════════════════════════════
+# 十、GM 快速備忘
+# ═══════════════════════════════════════════════════════
+
+gm_quick_reference:
+  roll_trigger: 不確定 + 有代價 + 影響故事 → 才擲骰
+  failure_mandate: 失敗必須推進情勢，不能是什麼都沒發生
+  partial_options:
+    - 代價（填時鐘、失去資源）
+    - 複雜化（新威脅、時間壓力）
+    - 部分達成（只拿到一半想要的）
+  dice_doubles:
+    両6: 意外收穫（不受修正值影響）
+    両1: 立即麻煩（不受修正值影響）

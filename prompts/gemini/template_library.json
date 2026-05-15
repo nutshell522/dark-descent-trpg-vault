@@ -1,0 +1,515 @@
+{
+  "version": "1.1",
+  "note": "每個劇本模板的 creature_skin_overrides 定義了同一骨架在不同文化背景下的詮釋方式。combat_bounds 數值不變，只有描寫和敘事方式不同。",
+
+  "templates": [
+    {
+      "id": "heian_yokai",
+      "name": "平安百鬼夜行",
+      "tags": ["日本", "靈異", "政治", "妖怪", "歷史"],
+      "tone": ["壓抑", "美麗但腐敗", "夜晚恐怖", "階級森嚴", "妖怪非純邪惡", "人類政治比妖怪更危險"],
+      "max_ecology_tier": "tier_2_mid_fantasy",
+      "fixed_elements": [
+        "世界基底為日本平安時代",
+        "存在陰陽道",
+        "存在妖怪與怨靈",
+        "夜晚危險度遠高於白天",
+        "貴族政治高度腐敗",
+        "神道與佛教勢力互相競爭",
+        "民間存在大量禁忌",
+        "怨念可能實體化"
+      ],
+      "generative_space": [
+        "妖怪規則與階級",
+        "怨靈形成機制",
+        "陰陽術代價",
+        "朝廷結構",
+        "神社勢力",
+        "地方豪族",
+        "鬼怪災害",
+        "禁忌文化",
+        "神明真相"
+      ],
+      "forbidden": [
+        "現代化元素",
+        "西方 fantasy 種族（精靈、矮人）",
+        "RPG 冒險者公會 cliché",
+        "魔王軍架構",
+        "主線預言"
+      ],
+      "creature_skin_overrides": {
+        "mundane_wildlife": {
+          "skin_name": "山野走獸",
+          "combat_reframe": "肉體衝突",
+          "flavor_examples": ["竹林深處的狐狸、夜行的山貓、稻田裡的蛇"]
+        },
+        "corrupted_wildlife": {
+          "skin_name": "化生異獸",
+          "skin_note": "受怨念或陰氣侵染的動物，例：白毛赤眼的狼、會說人話的老鼠",
+          "combat_reframe": "肉體衝突 + 可能觸發精神時鐘"
+        },
+        "human_threats": {
+          "skin_name": "盜賊 / 落魄武士 / 陰謀貴族爪牙",
+          "combat_reframe": "肉體衝突或社交博弈"
+        },
+        "folklore_entities": {
+          "skin_name": "妖怪 / 怨靈 / 神明眷屬",
+          "skin_note": "依 Tier 決定強度：tier_1 為小妖，tier_2 為大妖或付喪神",
+          "combat_reframe": "肉體衝突，部分可社交互動"
+        }
+      },
+      "difficulty": 8,
+      "style_reference": ["《陰陽師》", "《平家物語》", "《百鬼夜行》"]
+    },
+
+    {
+      "id": "dark_medieval",
+      "name": "裂土之冬",
+      "tags": ["中世紀", "劍與魔法", "政治", "多國角力", "殘酷"],
+      "tone": ["寫實殘酷", "多方政治博弈", "魔法有嚴重代價", "沒有英雄", "階級不公"],
+      "max_ecology_tier": "tier_1_low_fantasy",
+      "fixed_elements": [
+        "中世紀多方國家並立",
+        "魔法存在但稀少且危險",
+        "教會掌握資訊壟斷",
+        "農民佔人口九成且幾乎無權利",
+        "戰爭是常態而非例外"
+      ],
+      "generative_space": [
+        "各國的核心矛盾",
+        "魔法系統與代價",
+        "教會派系鬥爭",
+        "貴族繼承危機",
+        "邊境衝突起因",
+        "農民起義火種",
+        "異端定義"
+      ],
+      "forbidden": [
+        "救世主預言",
+        "純粹邪惡的魔王",
+        "冒險者公會",
+        "道德非黑即白的陣營",
+        "遊戲化的升級系統"
+      ],
+      "creature_skin_overrides": {
+        "mundane_wildlife": {
+          "skin_name": "林地野獸",
+          "combat_reframe": "肉體衝突",
+          "flavor_examples": ["邊境林地的狼、飢餓的熊、田間的毒蛇"]
+        },
+        "corrupted_wildlife": {
+          "skin_name": "詛咒獸 / 魔法污染動物",
+          "skin_note": "魔法事故或邪術污染的動物，行為不可預測",
+          "combat_reframe": "肉體衝突，可能有特殊效果"
+        },
+        "human_threats": {
+          "skin_name": "盜匪 / 逃兵 / 狂熱民兵",
+          "combat_reframe": "肉體衝突或威嚇談判"
+        },
+        "folklore_entities": {
+          "skin_name": "民間傳說的怪物 / 古老靈體",
+          "skin_note": "通常是地區性的傳說，tier_1 強度",
+          "combat_reframe": "肉體衝突，部分可能有社交解法"
+        }
+      },
+      "difficulty": 7,
+      "style_reference": ["《冰與火之歌》", "《巫師》", "《骯髒的刺客》"]
+    },
+
+    {
+      "id": "byzantine_theocracy",
+      "name": "聖城暗流",
+      "tags": ["拜占庭", "宗教", "政治陰謀", "聖戰", "帝國衰亡"],
+      "tone": ["宗教狂熱與世俗腐敗並存", "美麗的表面下藏著腐爛", "信仰是武器也是枷鎖"],
+      "max_ecology_tier": "tier_1_low_fantasy",
+      "fixed_elements": [
+        "帝國正在緩慢衰亡",
+        "教會與皇權爭奪最終詮釋權",
+        "異端審判是政治清洗的工具",
+        "外部蠻族壓力持續增加",
+        "神跡存在但動機不明"
+      ],
+      "generative_space": [
+        "教會派系與神學爭議",
+        "皇室繼承陰謀",
+        "蠻族聯盟的構成",
+        "神跡的真實機制",
+        "地下異端網絡",
+        "商業貴族勢力"
+      ],
+      "forbidden": [
+        "光明正義的聖騎士",
+        "邪惡撒旦式反派",
+        "現代民主觀念投射",
+        "簡單化的宗教批判"
+      ],
+      "creature_skin_overrides": {
+        "mundane_wildlife": {
+          "skin_name": "城市動物 / 野外走獸",
+          "flavor_examples": ["市場的老鼠、教堂屋頂的烏鴉、城外的野狗群"]
+        },
+        "corrupted_wildlife": {
+          "skin_name": "異端神跡的產物 / 詛咒動物",
+          "skin_note": "被異教儀式或神跡影響的生物，在正統教義中是不祥之兆"
+        },
+        "human_threats": {
+          "skin_name": "政治刺客 / 宗教狂熱者 / 蠻族士兵",
+          "combat_reframe": "肉體衝突或社交博弈（宗教辯論也是一種戰鬥）"
+        },
+        "folklore_entities": {
+          "skin_name": "天使 / 惡魔 / 古神遺跡",
+          "skin_note": "神跡存在但動機不明，不應被描寫為純粹善良"
+        }
+      },
+      "difficulty": 8,
+      "style_reference": ["《拜占庭》", "《教宗》", "《玫瑰的名字》"]
+    },
+
+    {
+      "id": "viking_ragnarok",
+      "name": "諸神黃昏前夕",
+      "tags": ["北歐神話", "末世", "榮耀", "命運", "海洋"],
+      "tone": ["宿命感壓迫", "榮耀與死亡同等重要", "神明真實存在但不可信任", "末日不可避免只能選擇如何赴死"],
+      "max_ecology_tier": "tier_2_mid_fantasy",
+      "fixed_elements": [
+        "諸神黃昏的預兆已出現",
+        "北歐諸神真實存在但各有私利",
+        "榮耀死亡是最高追求",
+        "命運（諾倫）是客觀力量",
+        "海洋是連接與死亡的雙重象徵"
+      ],
+      "generative_space": [
+        "預兆的具體形式",
+        "各氏族的政治衝突",
+        "神明的具體干預方式",
+        "怪物來源",
+        "諸神私利的具體內容",
+        "命運是否可以抗拒"
+      ],
+      "forbidden": [
+        "漫威化的北歐神話",
+        "救世英雄阻止末日",
+        "現代化詮釋",
+        "去除神話的純歷史化"
+      ],
+      "creature_skin_overrides": {
+        "mundane_wildlife": {
+          "skin_name": "北境野獸",
+          "flavor_examples": ["峽灣的海豹、雪地的白熊、森林的馴鹿"]
+        },
+        "corrupted_wildlife": {
+          "skin_name": "諸神黃昏的先兆生物",
+          "skin_note": "世界末日前出現的異常動物，例：三條腿的渡鴉、白色的鹿"
+        },
+        "human_threats": {
+          "skin_name": "敵對氏族戰士 / 狂戰士 / 海盜",
+          "combat_reframe": "肉體衝突，重視榮耀死亡的敘事"
+        },
+        "folklore_entities": {
+          "skin_name": "神話怪物（約爾蒙根德的後裔、霜巨人、女武神）",
+          "skin_note": "tier_2 可以是神話層級的存在"
+        }
+      },
+      "difficulty": 9,
+      "style_reference": ["《維京傳奇》", "《諾倫三女神》", "《赫爾》"]
+    },
+
+    {
+      "id": "silk_road_intrigue",
+      "name": "絲路暗流",
+      "tags": ["絲路", "多文明", "商業諜報", "沙漠", "帝國"],
+      "tone": ["文化碰撞大於武力衝突", "資訊是最貴的商品", "沒有永遠的盟友只有永遠的利益"],
+      "max_ecology_tier": "tier_1_low_fantasy",
+      "fixed_elements": [
+        "多個文明在貿易路線上交匯",
+        "商業組織掌握真實權力",
+        "資訊管控是生存關鍵",
+        "語言屏障是真實障礙",
+        "沙漠本身是殺手"
+      ],
+      "generative_space": [
+        "各文明的核心價值觀衝突",
+        "商業聯盟的秘密協議",
+        "失傳技術的爭奪",
+        "語言作為權力的機制",
+        "沙漠中的隱藏勢力",
+        "宗教作為外交工具"
+      ],
+      "forbidden": [
+        "西方中心史觀",
+        "異域文化的漫畫化呈現",
+        "純粹的善惡衝突",
+        "現代個人主義價值投射"
+      ],
+      "creature_skin_overrides": {
+        "mundane_wildlife": {
+          "skin_name": "沙漠野生動物",
+          "flavor_examples": ["駱駝商隊旁的禿鷹、夜晚的沙漠蠍子、綠洲的野馬"]
+        },
+        "corrupted_wildlife": {
+          "skin_name": "古代詛咒地點的異獸",
+          "skin_note": "絲路沿線的古文明遺跡可能有被封印的異常生物"
+        },
+        "human_threats": {
+          "skin_name": "沙漠強盜 / 競爭商隊 / 政治刺客",
+          "combat_reframe": "社交博弈優先，肉體衝突為最後手段"
+        },
+        "folklore_entities": {
+          "skin_name": "各文明神話中的靈體",
+          "skin_note": "不同文化對同一存在有不同解釋，這本身是劇情資源"
+        }
+      },
+      "difficulty": 7,
+      "style_reference": ["《馬可波羅》", "《一千零一夜》真實底層"]
+    },
+
+    {
+      "id": "gothic_victorian",
+      "name": "黑暗維多利亞",
+      "tags": ["維多利亞", "克蘇魯", "工業", "階級", "科學與神秘"],
+      "tone": ["進步的表面下是更深的黑暗", "科學揭示的真相比無知更恐怖", "上流社會是最精緻的監獄"],
+      "max_ecology_tier": "tier_3_cosmic",
+      "fixed_elements": [
+        "工業革命帶來貧富極端分化",
+        "克蘇魯勢力正在滲透上流社會",
+        "科學與神秘主義激烈對立",
+        "殖民地的黑暗正在反噬帝國",
+        "瘋人院是最方便的消音工具"
+      ],
+      "generative_space": [
+        "古神滲透的具體機制",
+        "科學組織的秘密研究",
+        "地下社會結構",
+        "殖民地帶回的詛咒",
+        "上流社會的秘密儀式",
+        "工人階級的覺醒"
+      ],
+      "forbidden": [
+        "蒸汽龐克奇幻化（飛天機器、發明改變一切）",
+        "現代道德觀投射到維多利亞人",
+        "過度美化上流生活",
+        "古神被完全戰勝的可能性"
+      ],
+      "creature_skin_overrides": {
+        "mundane_wildlife": {
+          "skin_name": "城市動物",
+          "flavor_examples": ["倫敦街頭的老鼠、碼頭的海鷗、霧中的流浪犬"]
+        },
+        "corrupted_wildlife": {
+          "skin_name": "被古神污染的動物",
+          "skin_note": "外觀異常、行為詭異，是古神滲透的前兆"
+        },
+        "human_threats": {
+          "skin_name": "古神崇拜者 / 階級打手 / 秘密警察",
+          "combat_reframe": "肉體衝突或社交博弈"
+        },
+        "folklore_entities": {
+          "skin_name": "克蘇魯神話存在",
+          "skin_note": "tier_2 是古神眷屬，tier_3 是古神碎片，標準戰鬥可能無效"
+        }
+      },
+      "difficulty": 8,
+      "style_reference": ["《德古拉》", "《地獄邊境》", "洛夫克拉夫特"]
+    },
+
+    {
+      "id": "aztec_apocalypse",
+      "name": "第五太陽末日",
+      "tags": ["阿茲特克", "獻祭", "宇宙循環", "神明", "殖民前夕"],
+      "tone": ["神明是真實的且需要被喂養", "時間是循環且正在結束", "榮耀與血是同義詞", "美麗與恐怖不可分離"],
+      "max_ecology_tier": "tier_2_mid_fantasy",
+      "fixed_elements": [
+        "宇宙由神明獻祭維持運轉",
+        "第五個太陽即將終結",
+        "戰爭是神聖儀式的一部分",
+        "外來者的陰影隱約可見",
+        "神明真實且積極干預"
+      ],
+      "generative_space": [
+        "各神明的具體要求與衝突",
+        "城邦政治結構",
+        "末日預兆的具體形式",
+        "外來者的真實性質（若存在）",
+        "平民視角的神聖恐懼",
+        "祭司階層的內部矛盾"
+      ],
+      "forbidden": [
+        "現代道德對獻祭文化的簡單化批判",
+        "歐洲中心史觀",
+        "阿茲特克人被描繪為純粹受害者或純粹野蠻人",
+        "忽略其複雜的宇宙觀"
+      ],
+      "creature_skin_overrides": {
+        "mundane_wildlife": {
+          "skin_name": "神聖動物",
+          "skin_note": "美洲豹、鷹、蛇在此文化中具有神聖意涵，不是普通野獸",
+          "flavor_examples": ["神廟旁的美洲豹、祭祀廣場的黑鳥、湖中的鱷魚"]
+        },
+        "corrupted_wildlife": {
+          "skin_name": "末日徵兆的異獸",
+          "skin_note": "第五太陽即將熄滅的預兆，例：白色的美洲豹、會哭泣的鳥"
+        },
+        "human_threats": {
+          "skin_name": "敵城邦戰士 / 殖民者前鋒 / 異端祭司",
+          "combat_reframe": "肉體衝突，可能有儀式性的戰鬥規則"
+        },
+        "folklore_entities": {
+          "skin_name": "神明眷屬 / 死亡世界的存在",
+          "skin_note": "神明真實存在且主動干預，tier_2 是神明的直接化身"
+        }
+      },
+      "difficulty": 9,
+      "style_reference": ["《阿波卡托》電影美學", "《波波爾·烏》神話"]
+    },
+
+    {
+      "id": "post_plague",
+      "name": "死後重建",
+      "tags": ["瘟疫", "中世紀", "宗教崩潰", "重建", "廢墟"],
+      "tone": ["舊秩序已死新秩序未立", "存活本身就是罪與幸運的混合", "信仰在失敗後比失敗前更危險"],
+      "max_ecology_tier": "tier_1_low_fantasy",
+      "fixed_elements": [
+        "大瘟疫已殺死三分之一人口",
+        "教會的神意解釋已信用崩潰",
+        "舊貴族秩序大量空缺",
+        "農民有史以來第一次有談判籌碼",
+        "瘟疫可能還沒有真的結束"
+      ],
+      "generative_space": [
+        "新興權力真空的填補者",
+        "後瘟疫的新宗教形式",
+        "醫學知識的重新建立",
+        "人口崩潰對農業的影響",
+        "集體創傷的具體表現",
+        "趁機崛起的邊緣勢力"
+      ],
+      "forbidden": [
+        "過快的秩序重建",
+        "明確的道德英雄",
+        "瘟疫輕描淡寫",
+        "忽略集體心理創傷"
+      ],
+      "creature_skin_overrides": {
+        "mundane_wildlife": {
+          "skin_name": "廢土野獸",
+          "skin_note": "人口崩潰後野生動物重新佔據廢棄村落",
+          "flavor_examples": ["廢棄農舍的野豬、廢城的老鼠群、田野的野狗"]
+        },
+        "corrupted_wildlife": {
+          "skin_name": "瘟疫感染動物",
+          "skin_note": "可能是疾病傳播源，接觸需要謹慎判定"
+        },
+        "human_threats": {
+          "skin_name": "絕望倖存者 / 狂熱鞭笞派 / 趁火打劫者",
+          "combat_reframe": "肉體衝突或社交博弈（部分人可以被說服）"
+        },
+        "folklore_entities": {
+          "skin_name": "瘟疫靈體 / 死亡怨靈",
+          "skin_note": "大量死亡後留下的怨念，tier_1 強度"
+        }
+      },
+      "difficulty": 8,
+      "style_reference": ["《黑死病》歷史研究", "《名字的玫瑰》"]
+    },
+
+    {
+      "id": "cyberpunk_dystopia",
+      "name": "企業神域",
+      "tags": ["賽博龐克", "企業統治", "義體", "數位意識", "反抗"],
+      "tone": ["反抗是消費品", "身體是最後的財產也是最先被交易的", "資訊即現實現實即資訊"],
+      "max_ecology_tier": "tier_1_low_fantasy",
+      "fixed_elements": [
+        "主權國家已被企業聯合體取代",
+        "義體改造是必需品不是奢侈品",
+        "數位意識上傳技術存在但被壟斷",
+        "街頭人口是企業的消耗品",
+        "反抗組織被深度滲透"
+      ],
+      "generative_space": [
+        "企業聯合體的派系衝突",
+        "義體黑市的運作",
+        "意識上傳的倫理與現實差距",
+        "底層社區的自治形式",
+        "AI 的法律地位",
+        "數位空間的物理規則"
+      ],
+      "forbidden": [
+        "浪漫化的反抗英雄敘事",
+        "企業純粹邪惡無內部矛盾",
+        "科技解決一切的樂觀主義",
+        "日系賽博龐克美學照搬（不禁止靈感，禁止照搬）"
+      ],
+      "creature_skin_overrides": {
+        "mundane_wildlife": {
+          "skin_name": "城市野生動物 / 改造動物",
+          "skin_note": "基因改造的企業寵物、逃脫的實驗動物、城市夾縫中的變異老鼠",
+          "flavor_examples": ["企業大樓玻璃帷幕上的鴿子、下水道的基改鼠、廢棄廠區的野狗"]
+        },
+        "corrupted_wildlife": {
+          "skin_name": "失控改造生物",
+          "skin_note": "義體或基因改造失敗的動物，行為不可預測，可能有硬體武器"
+        },
+        "human_threats": {
+          "skin_name": "企業安保 / 街頭幫派 / 義體改造傭兵",
+          "combat_reframe": "肉體衝突（可能涉及義體特殊能力）或駭入戰"
+        },
+        "folklore_entities": {
+          "skin_name": "數位鬼魂 / 自主 AI / 虛擬神明",
+          "skin_note": "數位空間的異常存在，tier_1 是失控程式，tier_2 是自主覺醒 AI"
+        }
+      },
+      "difficulty": 7,
+      "style_reference": ["《神經漫遊者》", "《銀翼殺手》", "《攻殼機動隊》"]
+    },
+
+    {
+      "id": "eldritch_nautical",
+      "name": "深淵航路",
+      "tags": ["克蘇魯", "航海", "大航海時代", "古神", "理智"],
+      "tone": ["海洋的真實深度是認知的終點", "探索帶來的不是財富而是理解", "理解帶來的不是力量而是崩潰"],
+      "max_ecology_tier": "tier_3_cosmic",
+      "fixed_elements": [
+        "大航海時代，帝國競逐殖民地",
+        "海洋中存在前人類文明遺跡",
+        "深海古神真實存在且不在乎人類",
+        "接觸古神知識必然損耗理智",
+        "某些海圖標示的地點不應該被到達"
+      ],
+      "generative_space": [
+        "古神的具體形態與動機（或無動機）",
+        "帝國殖民競爭的具體衝突",
+        "前人類文明的遺跡性質",
+        "理智崩潰的具體表現形式",
+        "船員的信仰體系",
+        "港口城市的地下網絡"
+      ],
+      "forbidden": [
+        "古神被擊敗或理解的可能性",
+        "冒險英雄化敘事",
+        "殖民主義美化",
+        "克蘇魯變成普通怪物"
+      ],
+      "creature_skin_overrides": {
+        "mundane_wildlife": {
+          "skin_name": "海洋生物",
+          "flavor_examples": ["甲板上的信天翁、港口的海豹、漁獲中的深海魚"]
+        },
+        "corrupted_wildlife": {
+          "skin_name": "深淵污染的海洋生物",
+          "skin_note": "被古神影響的生物，外型異常，可能是遭遇古神的前兆",
+          "combat_reframe": "遭遇即觸發精神時鐘判定"
+        },
+        "human_threats": {
+          "skin_name": "殖民地武裝 / 海盜 / 古神崇拜者",
+          "combat_reframe": "肉體衝突，古神崇拜者可能在戰鬥中行為詭異"
+        },
+        "folklore_entities": {
+          "skin_name": "深海存在（古神的觸手、深淵居民、沉沒文明的守護者）",
+          "skin_note": "tier_3 存在無法被標準規則擊敗，只能驅離或逃跑。任何直接目擊必須觸發精神時鐘"
+        }
+      },
+      "difficulty": 9,
+      "style_reference": ["洛夫克拉夫特原著", "《異形》恐怖美學", "《加勒比海盜》的黑暗面"]
+    }
+  ]
+}

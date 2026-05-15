@@ -1,0 +1,15 @@
+{
+  "name": "dark-descent-trpg-vault",
+  "private": true,
+  "scripts": {
+    "validate": "ts-node tools/validate-world.ts world.json",
+    "split": "ts-node tools/splitter.ts world.json"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.14.0",
+    "js-yaml": "^4.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}

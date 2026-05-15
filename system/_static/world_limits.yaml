@@ -1,0 +1,11 @@
+world_limits:
+  active_major_factions: 12
+  tier3_npcs_max: 30
+  tier2_npcs_max: 100
+  active_crises_max: 5
+  persistent_rumors_max: 20
+  regions_high_detail_max: 3
+auto_cleanup_rules:
+  - 超過 tier3_npcs_max：最久未登場者降級，不刪除記憶
+  - 超過 active_crises_max：最舊危機以「低調收尾」方式結案
+  - 超過 persistent_rumors_max：傳播力最低者標記為 expired
