@@ -117,11 +117,8 @@ Project KB 已載入 world_kb.md，直接引用世界的種族、地區、派系
   依背景自動生成，每樣一句話說明用途。
 
 gold / rations：
-  傭兵：gold 8, rations 3
-  中間人：gold 12, rations 2
-  工匠：gold 6, rations 4
-  教會雜役：gold 4, rations 5
-  自訂背景：gold 8, rations 3（預設）
+  直接使用 world_kb.md 該背景的 gold / rations 欄位值。
+  若玩家選擇自訂背景（無對應欄位），預設 gold 8, rations 3。
 
 靜默填入（不問玩家）：
   age: null
