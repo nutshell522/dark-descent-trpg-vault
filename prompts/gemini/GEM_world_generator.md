@@ -317,7 +317,7 @@
 
 強制規則：
 - 每個 region 必須有完整的 settlement_seed（含 ecology_seed）
-- 起始地點的 npc_probability_weights_hint 必須反映在該 region 的 settlement_seed
+- 起始地點的 npc_probability_weights 必須反映在該 region 的 settlement_seed
 - 每個 faction 必須至少在一個 region 有 region_faction 關係
 - 禁止生成任何個別 NPC 資料
 
