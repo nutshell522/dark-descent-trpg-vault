@@ -1,26 +1,72 @@
-_note: 角色當前狀態。請在建立角色後填入數值，之後由 tools/apply-delta.ts 自動更新。
-_kb_instruction: 此檔案需上傳至 Claude Project KB，每次結算後替換新版本。
-name: （請填入角色名稱）
-race: （請填入種族）
-background: （請填入背景）
+name: 源雅通
+race: human
+gender_presentation: male
+age: null
+background: 落魄陰陽師
+starting_region: border_village_yamashiro
+
+appearance:
+  brief: null
+  distinguishing_mark: null
+
 stats:
-  PHY: 0
+  PHY: -1
   AGI: 0
-  MND: 0
-  SOC: 0
-  WIL: 0
-  _note: 分配 5 點，每個屬性 -2 到 +3
-body_clock: 0/4
-mind_clock: 0/4
+  MND: 3
+  SOC: 2
+  WIL: 1
+
+specialty:
+  name: 式神驅使術
+  description: 呼喚、控制、命令非人實體的場合
+  mechanic: 直接相關判定時，可重擲一顆骰子並保留較好結果
+
+languages:
+  - 通用語
+
+psychology:
+  fear_trigger: 密閉空間（地窖、礦坑、被關押）
+  fear_mechanic: 觸發時需擲 WIL 判定，失敗則 mind_clock +1
+  moral_limit: null
+
+motivation:
+  long_term: 真相——弄清楚某件被隱瞞的事
+
+social:
+  faction_rep:
+    faction_id: onmyo_ryo
+    standing: former_member
+    detail: 已除名，關係冷漠甚至敵對
+  trusted_contact:
+    name: null
+    why_they_help: null
+  obligation:
+    type: null
+    description: null
+
+starting_secret: null
+
+chronic_condition: null
 injuries: []
-trauma: []
-personal_weakness: （玩家自訂：什麼情況會觸發精神時鐘）
+body_clock: "0/4"
+mind_clock: "0/4"
+
 resources:
-  food_days_remaining: 3
-  medicine_units: 2
-  ammo_or_arrows: 0
-reputation: {}
-inventory: []
-known_secrets: []
-permanent_changes: []
-last_updated: 初始化 / Year1_Day_1
+  gold: 5
+  rations: 3
+
+equipment:
+  - name: 殘破的符咒書
+    description: 記載著式神呼喚與五行基礎術式，部分頁面已模糊或撕毀
+  - name: 陰陽寮舊印鑑（已廢）
+    description: 官方已登記作廢，但在不知情者面前仍有一定威嚇效果
+  - name: 旅人草笠
+    description: 遮蔽面容，在村野間不引人注意
+  - name: 乾糧袋
+    description: 存放口糧用
+
+world_marks:
+  wanted_in: []
+  reputation: {}
+
+last_updated: session_01 創建
