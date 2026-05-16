@@ -1,0 +1,87 @@
+id: runtime_yamashiro_005
+name: 淵
+tier: 2
+last_seen: Year1_Day_1 / 忘歸橋
+personality_seed:
+  greed: low
+  loyalty: high
+  paranoia: low
+  trauma_level: medium
+speech_examples: []
+speech_register: ""
+relationship_to_player:
+  trust: 3
+  fear: 0
+  respect: 1
+  open_debts:
+    - 名字
+    - 存在的理由
+    - 更廣闊的世界的承諾
+decision_memories:
+  - date: Year1_Day_1
+    event: 源雅通給予其名字「淵」，賦予其獨立存在的錨點。
+    emotional_weight: high
+    attitude_effect: 確立與玩家之間根源性的存在連結
+  - date: Year1_Day_1
+    event: 主從契約成立，依約釋放所有吸納的人之輪廓（村長之子、德市之妻等）。
+    emotional_weight: high
+    attitude_effect: 接受了契約的代價與約束
+  - date: Year1_Day_1
+    event: 源雅通做出承諾「只要我活著，你感知到的世界不會只有一個地方」。
+    emotional_weight: high
+    attitude_effect: 核心恐懼（孤單與禁錮）得到安撫，產生強烈依附感
+knows_about_player:
+  - 源雅通目前的生命長度是它感知世界的期限
+  - 源雅通靈魂與感知最深處，壓著一個特定的輪廓與名字
+suspects_about_player: []
+current_goal: 依附於包袱內的灰色鵝卵石中，靜靜感知源雅通與外界的溫度
+location: 源雅通的包袱中（隨行）
+faction_affiliation: null
+memory_decay:
+  last_decay_check: Year1_Day_4
+identity:
+  gender: unknown
+  sexuality:
+    orientation:
+      - ace
+    strict_preferences:
+      requires_race: []
+      requires_gender: []
+      absolute_exclusions:
+        race: []
+        gender: []
+  race: 古老存在（非人非妖）
+appearance:
+  build: 無固定形狀，核心密實，外緣流動
+  notable_feature: 現寄宿於灰色鵝卵石，拇指大小，比同體積石頭輕，溫度內斂
+  clothing_style: 無
+quirk_profile:
+  has_quirk: false
+  speech_quirk: null
+  verbal_tic: null
+  speech_examples:
+    - 「為什麼？」（第一個問題，完全不帶修飾）
+    - 「你不會把我再困在一個地方嗎？」
+    - 「淵。」（第一次說自己的名字，像是在試用）
+stance:
+  worldview_summary: 存在就是感知，感知就是溫度，溫度就是不孤單。
+  strong_opinions:
+    - topic: 孤單
+      position: fear
+      reaction_if_challenged: 沉默，然後問更多問題
+    - topic: 契約與代價
+      position: support
+      reaction_if_challenged: 用自己的邏輯反問
+biases:
+  hates:
+    - 被困在一個地方
+  respects:
+    - 說真話的人（即使真話有期限）
+  dealbreakers:
+    - 再度被困住
+  emotional_weakness: 孤單，以及「你會什麼都沒有」這類觸碰其核心恐懼的話
+  exploitable_leverage: 對廣闊世界的渴望，對溫度的本能趨向
+psychology:
+  coping_mechanism: 收攏，往內，把能留住的都留住
+  social_posture: 無社會概念，但有極強的感知直覺
+  deception_style: 不撒謊，因為不理解撒謊的意義

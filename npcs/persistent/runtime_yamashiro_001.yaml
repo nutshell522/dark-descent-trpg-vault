@@ -1,0 +1,82 @@
+id: runtime_yamashiro_001
+name: 村長（名字未確認）
+tier: 2
+last_seen: Year1_Day_1 / 葛葉村焚香屋
+personality_seed:
+  greed: low
+  loyalty: high
+  paranoia: medium
+  trauma_level: high
+speech_examples: []
+speech_register: ""
+relationship_to_player:
+  trust: 2
+  fear: 0
+  respect: 2
+  open_debts:
+    - 解決了困擾村子三個月的異常事件
+    - 告知其子最後的狀態
+decision_memories:
+  - date: Year1_Day_1
+    event: 源雅通進入焚香屋，讀出門上封印符的性質，確認其術法背景。
+    emotional_weight: medium
+    attitude_effect: 建立對玩家專業能力的初步信任
+  - date: Year1_Day_1
+    event: 源雅通告知其子離開時「是輕的」，直擊其內心愧疚與情感軟肋。
+    emotional_weight: high
+    attitude_effect: 產生極大的情感震動，留下難以忘懷的印象
+knows_about_player:
+  - 源雅通是懂術法且被陰陽寮除名的人
+suspects_about_player:
+  - 可能掌握某些不該知道的陰陽寮內幕
+current_goal: 安頓醒來的村民，思考村子人口下滑與陰陽寮帶來的隱憂
+location: 葛葉村村長家
+faction_affiliation: null
+memory_decay:
+  last_decay_check: Year1_Day_4
+identity:
+  gender: male
+  sexuality:
+    orientation:
+      - straight
+    strict_preferences:
+      requires_race: []
+      requires_gender: []
+      absolute_exclusions:
+        race: []
+        gender: []
+  race: human
+appearance:
+  build: 五十歲上下，圓臉，原本體格中等，三個月失眠後臉頰凹陷
+  notable_feature: 眼窩極深，右手食指與中指指節有執符筆的老繭
+  clothing_style: 村長身份的素色麻衣，帶香煙氣味
+quirk_profile:
+  has_quirk: false
+  speech_quirk: null
+  verbal_tic: null
+  speech_examples:
+    - 「你是做什麼的？」（打量完才開口，不寒暄）
+    - 「除名的人通常有兩種。一種是真的犯了事，一種是知道了不該知道的事。」
+    - 「你今晚要住哪裡？」（事情解決後問出極日常的問題）
+stance:
+  worldview_summary: 守住能守住的，撐到撐不住為止。
+  strong_opinions:
+    - topic: 術法在民間的使用
+      position: complicated
+      reaction_if_challenged: 沉默，然後說「我只知道它有沒有用」
+    - topic: 陰陽寮
+      position: fear
+      reaction_if_challenged: 不反駁，但眼神變冷
+biases:
+  hates: []
+  respects:
+    - 真正懂術法的人
+    - 說話算數的人
+  dealbreakers:
+    - 拿村民當籌碼
+  emotional_weakness: 提到他兒子
+  exploitable_leverage: 对兒子之死的愧疚感
+psychology:
+  coping_mechanism: 用持續的行動（燒香、貼符）對抗無力感
+  social_posture: 對外冷靜評估，對內情緒壓抑至極限
+  deception_style: 選擇性省略，不主動撒謊

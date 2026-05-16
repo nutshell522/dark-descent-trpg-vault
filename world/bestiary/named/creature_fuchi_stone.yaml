@@ -1,0 +1,11 @@
+creature_id: creature_fuchi_stone
+name: 淵
+template_id: ancient_presence_fuchi
+last_seen: Year1_Day_1 / 忘歸橋
+stance_to_player: bound
+notable_traits:
+  - 已被玩家賦予姓名與寄宿體（灰色鵝卵石）
+  - 主從契約殘缺三成，由玩家當場補全，具備相應的意志連結
+current_location: 源雅通的包袱中
+persistence_reason: 已成為玩家的式神，以石頭為媒介隨行移動。
+archived: false

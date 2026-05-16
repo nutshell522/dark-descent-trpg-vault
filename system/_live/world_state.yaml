@@ -1,8 +1,8 @@
 global_time:
-  current_date: Year1_Day_1
+  current_date: Year1_Day_4
   current_season: 待設定
   moon_cycle: 待設定
-  days_since_campaign_start: 0
+  days_since_campaign_start: 3
 travel_time_reference: "待填寫（例：地區A_to_地區B: 8_days_on_foot）"
 active_global_events:
   - id: evt_001
@@ -21,7 +21,10 @@ resolution_map:
       region_id: border_village_yamashiro
       detail_level: full
       active_npcs: []
-      local_events: []
+      local_events:
+        - "Year1_Day_4: 困擾村子三個月的異常深眠事件終止，忘歸橋下的異樣感徹底消失。"
+      atmosphere: 從壓抑轉為短暫的平靜與疑慮
+      last_updated: Year1_Day_4
   abstract_state:
     - region: 平安京：內裡與大內裏
       region_id: heian_kyo_inner

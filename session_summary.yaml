@@ -1,0 +1,379 @@
+session_summary:
+  session_id: session_01
+  date_ingame: Year1_Day_1
+  duration_ingame_days: 1
+
+  major_events:
+    - date: Year1_Day_1
+      event: 源雅通抵達葛葉村，發現村民受古老存在「淵」影響，多人陷入異常深眠狀態。
+      world_impact: local
+    - date: Year1_Day_1
+      event: 源雅通前往忘歸橋，與淵直接接觸，感知其性質——非妖非靈，而是古老的、以吸納人之一部分維生的存在。
+      world_impact: local
+    - date: Year1_Day_1
+      event: 源雅通與淵談判，以主從契約完成式神約束，淵釋放所有被吸納的人之輪廓，包含村長之子、德市之妻及數名更早的死者。
+      world_impact: local
+    - date: Year1_Day_1
+      event: 德市之女小梅自異常深眠中甦醒，恢復意識。
+      world_impact: local
+    - date: Year1_Day_1
+      event: 淵正式成為源雅通的式神，以石頭為寄宿體，以「不被困在一個地方、得以感知更廣闊的世界」為契約核心。
+      world_impact: local
+
+  npc_changes:
+    - npc_id: runtime_yamashiro_001
+      name: 村長（名字未確認）
+      attitude_delta: improved
+      trust_delta: +2
+      new_memories:
+        - event: 源雅通進入焚香屋，讀出門上封印符的性質，確認其術法背景
+          emotional_weight: medium
+        - event: 源雅通告知其子離開時「是輕的」
+          emotional_weight: high
+      relationship_to_player:
+        open_debts:
+          - 解決了困擾村子三個月的異常事件
+          - 告知其子最後的狀態
+      persist_flag: true
+      persist_reason: 與玩家有實質互動，持有重要世界資訊，日後可能再度接觸
+      tier_upgrade: false
+      persist_snapshot:
+        identity:
+          gender: male
+          sexuality:
+            orientation: [straight]
+            strict_preferences:
+              requires_race: []
+              requires_gender: []
+              absolute_exclusions:
+                race: []
+                gender: []
+          race: human
+        appearance:
+          build: 五十歲上下，圓臉，原本體格中等，三個月失眠後臉頰凹陷
+          notable_feature: 眼窩極深，右手食指與中指指節有執符筆的老繭
+          clothing_style: 村長身份的素色麻衣，帶香煙氣味
+        quirk_profile:
+          has_quirk: false
+          speech_quirk: null
+          verbal_tic: null
+          speech_examples:
+            - 「你是做什麼的？」（打量完才開口，不寒暄）
+            - 「除名的人通常有兩種。一種是真的犯了事，一種是知道了不該知道的事。」
+            - 「你今晚要住哪裡？」（事情解決後問出極日常的問題）
+        stance:
+          worldview_summary: 守住能守住的，撐到撐不住為止。
+          strong_opinions:
+            - topic: 術法在民間的使用
+              position: complicated
+              reaction_if_challenged: 沉默，然後說「我只知道它有沒有用」
+            - topic: 陰陽寮
+              position: fear
+              reaction_if_challenged: 不反駁，但眼神變冷
+        personality_seed:
+          greed: low
+          loyalty: high
+          paranoia: medium
+          trauma_level: high
+        biases:
+          hates: []
+          respects:
+            - 真正懂術法的人
+            - 說話算數的人
+          dealbreakers:
+            - 拿村民當籌碼
+          emotional_weakness: 提到他兒子
+          exploitable_leverage: 對兒子之死的愧疚感
+        psychology:
+          coping_mechanism: 用持續的行動（燒香、貼符）對抗無力感
+          social_posture: 對外冷靜評估，對內情緒壓抑至極限
+          deception_style: 選擇性省略，不主動撒謊
+
+    - npc_id: runtime_yamashiro_002
+      name: 德市
+      attitude_delta: improved
+      trust_delta: +3
+      new_memories:
+        - event: 源雅通告知小梅的危急狀態，並安排今晚守護
+          emotional_weight: high
+        - event: 小梅在源雅通介入後甦醒
+          emotional_weight: high
+      relationship_to_player:
+        open_debts:
+          - 女兒的性命
+          - 提供了跌打藥與文房四寶
+      persist_flag: true
+      persist_reason: 與玩家有深度情感連結，日後可能提供資源或情報
+      tier_upgrade: false
+      persist_snapshot:
+        identity:
+          gender: male
+          sexuality:
+            orientation: [straight]
+            strict_preferences:
+              requires_race: []
+              requires_gender: []
+              absolute_exclusions:
+                race: []
+                gender: []
+          race: human
+        appearance:
+          build: 寬肩膀，原本結實，現在臉頰凹陷，眼窩發暗
+          notable_feature: 走直線時身體有細微偏移，像是內耳受損
+          clothing_style: 磨坊工人的粗布衣，沾著穀物粉塵
+        quirk_profile:
+          has_quirk: true
+          speech_quirk: 說話容易說到一半停住，然後用力把思路拉回來
+          verbal_tic: 習慣重複對方說的最後一個詞再接著說
+          quirk_intensity: medium
+          speech_examples:
+            - 「你說路過。」（重複後停頓，像是在確認自己聽到的）
+            - 「她說她娘在水裡，朝她招手，叫她下去。說水裡很暖。」（說完之後很長的沉默）
+            - 「我能做什麼？告訴我我能做什麼。」（急切但語氣是請求不是命令）
+        stance:
+          worldview_summary: 只要女兒還在，其他的事都可以想辦法。
+          strong_opinions:
+            - topic: 外來者
+              position: complicated
+              reaction_if_challenged: 先防備，但如果對方對小梅有利就迅速軟化
+            - topic: 亡妻阿杏
+              position: complicated
+              reaction_if_challenged: 沉默，轉移話題
+        personality_seed:
+          greed: low
+          loyalty: high
+          paranoia: low
+          trauma_level: high
+        biases:
+          hates: []
+          respects:
+            - 對小梅好的人
+            - 說到做到的人
+          dealbreakers:
+            - 拿小梅威脅他
+          emotional_weakness: 提到阿杏或小梅的安危
+          exploitable_leverage: 嘴巴不牢靠，消息容易在村子裡傳開
+        psychology:
+          coping_mechanism: 用日常勞動（磨坊工作）麻痺自己，但注意力已無法集中
+          social_posture: 對陌生人防備，對可信任的人過度依賴
+          deception_style: 拙劣，臉上藏不住事
+
+    - npc_id: runtime_yamashiro_003
+      name: 熊爺
+      attitude_delta: improved
+      trust_delta: +2
+      new_memories:
+        - event: 源雅通邀他同去忘歸橋，兩人並肩面對淵
+          emotional_weight: medium
+        - event: 源雅通完成主從契約，熊爺全程目擊
+          emotional_weight: medium
+      relationship_to_player:
+        open_debts: []
+      persist_flag: true
+      persist_reason: 與玩家建立了實質的信任基礎，提供了庇護所，具備豐富的在地知識
+      tier_upgrade: false
+      persist_snapshot:
+        identity:
+          gender: male
+          sexuality:
+            orientation: [straight]
+            strict_preferences:
+              requires_race: []
+              requires_gender: []
+              absolute_exclusions:
+                race: []
+                gender: []
+          race: human
+        appearance:
+          build: 矮但肩膀極寬，像是動物縮進人的皮囊
+          notable_feature: 臉上皺紋深如刀刻，眼睛出奇清亮
+          clothing_style: 獵人的厚實麻布衣，腰間配短刀
+        quirk_profile:
+          has_quirk: false
+          speech_quirk: null
+          verbal_tic: null
+          speech_examples:
+            - 「在山裡待久了。分得清楚什麼是危險，什麼是風吹草動。」
+            - 「它認識你了——不是來找你，是記住你了。」
+            - 「你要睡。」（陳述，不是建議）
+        stance:
+          worldview_summary: 山裡的規則放到哪裡都適用：看清楚再動，動了就不後悔。
+          strong_opinions:
+            - topic: 術法與超自然現象
+              position: complicated
+              reaction_if_challenged: 用具體經驗反駁，不用理論
+            - topic: 村子與村民
+              position: complicated
+              reaction_if_challenged: 沉默，因為他選擇住在村子邊緣本身就是一個立場
+        personality_seed:
+          greed: low
+          loyalty: medium
+          paranoia: medium
+          trauma_level: low
+        biases:
+          hates:
+            - 不必要的話
+            - 在沒把握的情況下輕率行動
+          respects:
+            - 說話精確的人
+            - 在壓力下還能保持清醒的人
+          dealbreakers:
+            - 拿別人當盾牌
+          emotional_weakness: 尚未觸及
+          exploitable_leverage: 尚未發現
+        psychology:
+          coping_mechanism: 用具體的行動與準備對抗不確定性
+          social_posture: 對所有人保持等距，不親近也不排斥
+          deception_style: 幾乎不撒謊，用沉默代替
+
+    - npc_id: runtime_yamashiro_004
+      name: 村口老婦（名字未確認）
+      attitude_delta: unchanged
+      trust_delta: 0
+      new_memories:
+        - event: 源雅通是今天進村的外來者，詢問村子狀況
+          emotional_weight: low
+      relationship_to_player:
+        open_debts: []
+      persist_flag: false
+      persist_reason: ""
+      tier_upgrade: false
+
+    - npc_id: runtime_yamashiro_005
+      name: 淵
+      attitude_delta: improved
+      trust_delta: +3
+      new_memories:
+        - event: 源雅通給予它名字「淵」
+          emotional_weight: high
+        - event: 主從契約成立，淵釋放所有吸納的人之輪廓
+          emotional_weight: high
+        - event: 源雅通承諾「只要我活著，你感知到的世界不會只有一個地方」
+          emotional_weight: high
+      relationship_to_player:
+        open_debts:
+          - 名字
+          - 存在的理由
+          - 更廣闊的世界的承諾
+      persist_flag: true
+      persist_reason: 主從式神，核心角色，與玩家以契約綁定
+      tier_upgrade: false
+      persist_snapshot:
+        identity:
+          gender: unknown
+          sexuality:
+            orientation: [ace]
+            strict_preferences:
+              requires_race: []
+              requires_gender: []
+              absolute_exclusions:
+                race: []
+                gender: []
+          race: 古老存在（非人非妖）
+        appearance:
+          build: 無固定形狀，核心密實，外緣流動
+          notable_feature: 現寄宿於灰色鵝卵石，拇指大小，比同體積石頭輕，溫度內斂
+          clothing_style: 無
+        quirk_profile:
+          has_quirk: false
+          speech_quirk: null
+          verbal_tic: null
+          speech_examples:
+            - 「為什麼？」（第一個問題，完全不帶修飾）
+            - 「你不會把我再困在一個地方嗎？」
+            - 「淵。」（第一次說自己的名字，像是在試用）
+        stance:
+          worldview_summary: 存在就是感知，感知就是溫度，溫度就是不孤單。
+          strong_opinions:
+            - topic: 孤單
+              position: fear
+              reaction_if_challenged: 沉默，然後問更多問題
+            - topic: 契約與代價
+              position: support
+              reaction_if_challenged: 用自己的邏輯反問
+        personality_seed:
+          greed: low
+          loyalty: high
+          paranoia: low
+          trauma_level: medium
+        biases:
+          hates:
+            - 被困在一個地方
+          respects:
+            - 說真話的人（即使真話有期限）
+          dealbreakers:
+            - 再度被困住
+          emotional_weakness: 孤單，以及「你會什麼都沒有」這類觸碰其核心恐懼的話
+          exploitable_leverage: 對廣闊世界的渴望，對溫度的本能趨向
+        psychology:
+          coping_mechanism: 收攏，往內，把能留住的都留住
+          social_posture: 無社會概念，但有極強的感知直覺
+          deception_style: 不撒謊，因為不理解撒謊的意義
+
+  creature_changes:
+    - encounter_id: enc_yamashiro_001
+      template_id: ancient_presence_fuchi
+      outcome: resolved_nonviolent
+      persist_flag: true
+      persist_reason: 已成為玩家式神，以石頭為寄宿體隨行
+      backfill_candidate: false
+      backfill_trigger: ""
+
+  resource_changes:
+    - resource: gold
+      delta: -2
+      current_total: 3
+    - resource: rations
+      delta: 0
+      current_total: 3
+    - resource: 跌打藥（陶瓶）
+      delta: +1
+      current_total: 1
+    - resource: 式神「淵」
+      delta: +1
+      current_total: 1
+
+  injury_updates: []
+
+  rumors_created:
+    - source_event: 葛葉村異常深眠事件解決
+      origin_date: Year1_Day_1
+      content: 一個外來的落魄陰陽師在一夜之間解決了困擾葛葉村三個月的怪事
+      spread_speed: slow
+      initial_believed_by:
+        - 村長
+        - 德市
+        - 熊爺
+
+  world_impacts:
+    - description: 忘歸橋下的古老存在「淵」離開原棲息地，以式神身份隨源雅通移動，橋下異常現象消失
+      affected_region: border_village_yamashiro
+      severity: moderate
+    - description: 葛葉村三個月來的異常深眠事件終止，小梅等受影響村民陸續恢復正常
+      affected_region: border_village_yamashiro
+      severity: moderate
+
+  world_conflicts_noted: []
+
+  pending_threads:
+    - 淵在源雅通感知最深處發現了某個被壓著的名字與輪廓，那個人的真實狀況不明
+    - 忘歸橋石柱上「橋下有——」的殘缺文字，建橋者知道橋下有什麼，原因不明
+    - 源雅通被陰陽寮除名的真實原因未揭露
+    - 主從契約有三成殘缺由源雅通當場補全，長期穩定性未知
+
+  next_session_hooks:
+    - 葛葉村村長可能成為情報來源，他對陰陽寮有複雜的情感
+    - 熊爺提到「等這件事處理完，你打算怎麼辦」，那個名字的問題懸而未決
+    - 淵作為式神首次隨行，其能力邊界與主從契約的實際效果尚待探索
+    - 葛葉村本身的人口持續下滑問題未解決，根源可能不只是淵
+
+  endgame_check: false
+  endgame_trigger_condition: ""
+
+  scene_checkpoint:
+    date_ingame: Year1_Day_1
+    location: 熊爺獨屋，葛葉村東側樹林邊緣
+    situation_snapshot: 火堆燒著，熊爺靠牆而眠，源雅通在矮榻上剛剛睡著，包袱在身邊，淵在其中，涼的，靜的。
+    last_critical_dialogue: 「我沒辦法保證永遠。但我保證，只要我活著，你感知到的世界不會只有一個地方。」
+    player_next_intent: 天亮後與熊爺談論淵在感知深處找到的那個名字與輪廓
+    active_thread: 淵在主從契約建立時，從源雅通最深處翻出了一個被壓著的名字，那個人的輪廓出現在淵吸納的存在之中，是否真實，是否還在，懸而未決。

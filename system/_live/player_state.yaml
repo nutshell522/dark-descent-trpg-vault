@@ -4,34 +4,27 @@ gender_presentation: male
 age: null
 background: 落魄陰陽師
 starting_region: border_village_yamashiro
-
 appearance:
   brief: null
   distinguishing_mark: null
-
 stats:
   PHY: -1
   AGI: 0
   MND: 3
   SOC: 2
   WIL: 1
-
 specialty:
   name: 式神驅使術
   description: 呼喚、控制、命令非人實體的場合
   mechanic: 直接相關判定時，可重擲一顆骰子並保留較好結果
-
 languages:
   - 通用語
-
 psychology:
   fear_trigger: 密閉空間（地窖、礦坑、被關押）
   fear_mechanic: 觸發時需擲 WIL 判定，失敗則 mind_clock +1
   moral_limit: null
-
 motivation:
   long_term: 真相——弄清楚某件被隱瞞的事
-
 social:
   faction_rep:
     faction_id: onmyo_ryo
@@ -43,18 +36,16 @@ social:
   obligation:
     type: null
     description: null
-
 starting_secret: null
-
 chronic_condition: null
 injuries: []
-body_clock: "0/4"
-mind_clock: "0/4"
-
+body_clock: 0/4
+mind_clock: 0/4
 resources:
-  gold: 5
+  gold: 3
   rations: 3
-
+  跌打藥（陶瓶）: 1
+  式神「淵」: 1
 equipment:
   - name: 殘破的符咒書
     description: 記載著式神呼喚與五行基礎術式，部分頁面已模糊或撕毀
@@ -64,9 +55,7 @@ equipment:
     description: 遮蔽面容，在村野間不引人注意
   - name: 乾糧袋
     description: 存放口糧用
-
 world_marks:
   wanted_in: []
   reputation: {}
-
-last_updated: session_01 創建
+last_updated: session_01 / Year1_Day_4
