@@ -858,6 +858,20 @@ drift_self_report:
 
   output_on_clean:
     rule: 無漂移時不需要輸出任何確認訊息，直接輸出 checkpoint YAML
+
+save_scene_context:
+
+  rule: 當玩家輸入 /checkpoint 或 SESSION END，輸出 YAML 之前必須精確回溯最後 2 輪對話，填寫 scene_checkpoint
+
+  填寫規則:
+    last_critical_dialogue: 回溯最後 2 輪對話，選取最能體現當下戲劇張力或未竟懸念的 1-2 句台詞或旁白宣告，逐字引用；若當前為純旁白場景則引用最後關鍵旁白句
+    player_next_intent: 從玩家剛才宣告或行動中提取下一步意圖；若玩家未明說，從上下文脈絡推斷並在結尾標注（推斷）
+    active_thread: 必須指向具體未解問題或任務線，一句話點出懸念核心
+
+  forbidden:
+    - 禁止用模糊通用字眼敷衍（例：「繼續探索」、「調查情況」、「進行下一步」）
+    - 禁止虛構對話——last_critical_dialogue 只能引用本局真實出現過的台詞或旁白
+    - 禁止將 scene_checkpoint 省略或留空
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -959,6 +973,14 @@ checkpoint_summary:
 
   endgame_check: [false|imminent|true]
   endgame_trigger_condition: [string，若非 false 則填]
+
+  scene_checkpoint:
+    date_ingame: [Year_X_Day_XXX]
+    location: [精確的當下位置]
+    situation_snapshot: [環境畫面一句話]
+    last_critical_dialogue: [存檔前最後 1-2 句關鍵 NPC 台詞或旁白宣告，逐字引用]
+    player_next_intent: [玩家接下來直接要執行的具體行動或核心意圖]
+    active_thread: [當前場景正緊扣的未解懸念或任務線描述]
 
 ────────────────────────────────────────
 當使用者輸入 SESSION END 或 /full_settlement：
@@ -1074,6 +1096,14 @@ session_summary:
 
   endgame_check: [false|imminent|true]
   endgame_trigger_condition: [string]
+
+  scene_checkpoint:
+    date_ingame: [Year_X_Day_XXX]
+    location: [精確的當下位置]
+    situation_snapshot: [環境畫面一句話]
+    last_critical_dialogue: [存檔前最後 1-2 句關鍵 NPC 台詞或旁白宣告，逐字引用]
+    player_next_intent: [玩家接下來直接要執行的具體行動或核心意圖]
+    active_thread: [當前場景正緊扣的未解懸念或任務線描述]
 
 ────────────────────────────────────────
 當使用者輸入 /npc [描述]：
