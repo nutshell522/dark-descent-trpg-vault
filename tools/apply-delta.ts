@@ -31,6 +31,52 @@ interface DecisionMemory {
   attitude_effect?: string;
 }
 
+interface SexualityData {
+  orientation?: string[];
+  strict_preferences?: {
+    requires_race?: string[];
+    requires_gender?: string[];
+    absolute_exclusions?: { race?: string[]; gender?: string[] };
+  };
+}
+
+interface IdentityData {
+  gender?: string;
+  sexuality?: SexualityData;
+  race?: string;
+}
+
+interface QuirkProfile {
+  has_quirk?: boolean;
+  speech_quirk?: string | null;
+  verbal_tic?: string | null;
+  quirk_intensity?: "low" | "medium" | "high";
+  speech_examples?: string[];
+}
+
+interface StanceData {
+  worldview_summary?: string;
+  strong_opinions?: Array<{
+    topic: string;
+    position: string;
+    reaction_if_challenged: string;
+  }>;
+}
+
+interface BiasesData {
+  hates?: string[];
+  respects?: string[];
+  dealbreakers?: string[];
+  emotional_weakness?: string;
+  exploitable_leverage?: string;
+}
+
+interface PsychologyData {
+  coping_mechanism?: string;
+  social_posture?: string;
+  deception_style?: string;
+}
+
 interface NpcUpdate {
   action: "create" | "update" | "tier_change" | "archived";
   id: string;
@@ -40,6 +86,12 @@ interface NpcUpdate {
   personality_seed?: Record<string, string>;
   speech_examples?: string[];
   speech_register?: string;
+  identity?: IdentityData;
+  appearance?: { build?: string; notable_feature?: string; clothing_style?: string };
+  quirk_profile?: QuirkProfile;
+  stance?: StanceData;
+  biases?: BiasesData;
+  psychology?: PsychologyData;
   relationship_to_player?: RelationshipDelta;
   decision_memories?: DecisionMemory[];
   knows_about_player?: string[];
@@ -260,6 +312,12 @@ function applyNpcUpdates(delta: WorldDelta["world_delta"]): string[] {
         memory_decay: { last_decay_check: delta.new_current_date },
       };
       if (update.memory_decay_exempt) npcData.memory_decay_exempt = true;
+      if (update.identity)      npcData.identity      = update.identity;
+      if (update.appearance)    npcData.appearance    = update.appearance;
+      if (update.quirk_profile) npcData.quirk_profile = update.quirk_profile;
+      if (update.stance)        npcData.stance        = update.stance;
+      if (update.biases)        npcData.biases        = update.biases;
+      if (update.psychology)    npcData.psychology    = update.psychology;
       saveYaml(filePath, npcData);
       ok(`NPC [${update.name}] 建立 Tier ${update.tier ?? 2} 持久化檔`);
       changes.push(`NPC created: ${update.name} (${update.id})`);
@@ -325,6 +383,14 @@ function applyNpcUpdates(delta: WorldDelta["world_delta"]): string[] {
         existing.speech_examples = update.speech_examples;
       }
       if (update.speech_register)       existing.speech_register = update.speech_register;
+
+      // 身份欄位：覆寫（不累加，角色卡以最新 persist_snapshot 為準）
+      if (update.identity)      existing.identity      = update.identity;
+      if (update.appearance)    existing.appearance    = update.appearance;
+      if (update.quirk_profile) existing.quirk_profile = update.quirk_profile;
+      if (update.stance)        existing.stance        = update.stance;
+      if (update.biases)        existing.biases        = update.biases;
+      if (update.psychology)    existing.psychology    = update.psychology;
 
       // 更新 memory_decay 時間戳
       const md = (existing.memory_decay ?? {}) as Record<string, unknown>;
