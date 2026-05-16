@@ -64,6 +64,7 @@
 - 從 npc_changes 的 delta 欄位提取資訊
 - 壓縮成持久化格式（見輸出 schema）
 - 只保留影響未來決策的記憶，不保留對話細節
+- 若 npc_changes 項目包含 persist_snapshot，將其中的 identity、appearance、quirk_profile、stance、biases、psychology 欄位**原樣複製**至 npc_updates 對應項目，禁止修改或壓縮這些欄位
 
 更新（action: update）：
 
@@ -219,6 +220,40 @@ world_delta:
         loyalty:                     # low | medium | high
         paranoia:                    # low | medium | high
         trauma_level:                # low | medium | high
+      identity:                      # 從 persist_snapshot 原樣複製（若存在）
+        gender:
+        sexuality:
+          orientation: []
+          strict_preferences:
+            requires_race: []
+            requires_gender: []
+            absolute_exclusions:
+              race: []
+              gender: []
+        race:
+      appearance:                    # 從 persist_snapshot 原樣複製（若存在）
+        build:
+        notable_feature:
+        clothing_style:
+      quirk_profile:                 # 從 persist_snapshot 原樣複製（若存在）
+        has_quirk:
+        speech_quirk:
+        verbal_tic:
+        quirk_intensity:
+        speech_examples: []
+      stance:                        # 從 persist_snapshot 原樣複製（若存在）
+        worldview_summary:
+        strong_opinions: []
+      biases:                        # 從 persist_snapshot 原樣複製（若存在）
+        hates: []
+        respects: []
+        dealbreakers: []
+        emotional_weakness:
+        exploitable_leverage:
+      psychology:                    # 從 persist_snapshot 原樣複製（若存在）
+        coping_mechanism:
+        social_posture:
+        deception_style:
       relationship_to_player:
         trust:                       # -10 到 +10（update 時填變化量，如 +2 或 -1）
         fear:

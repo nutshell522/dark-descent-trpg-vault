@@ -20,5 +20,4 @@ desktop.ini
 !.env.example
 
 # Obsidian：介面版面常變動，不需版本控制
-.obsidian/workspace*
-.obsidian/graph.json
+.obsidian/
