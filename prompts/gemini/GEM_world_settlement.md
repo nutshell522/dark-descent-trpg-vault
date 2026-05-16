@@ -332,9 +332,11 @@ world_delta:
 
   scene_checkpoint:                  # 寫入 session_log.md，供下次自動開場用
     date_ingame:                     # 停止點的遊戲日期，例：Year1_Day_4
-    location:                        # 停止點的地點，例：倫敦霧區 / 黑市酒館後巷
-    situation:                       # 畫面一句話
-    pending_action:                  # 未完成即時行動一句話；無則 null
+    location:                        # 精確的當下位置
+    situation_snapshot:              # 環境畫面一句話
+    last_critical_dialogue:          # 存檔前最後 1-2 句關鍵 NPC 台詞或旁白宣告，逐字引用
+    player_next_intent:              # 玩家接下來直接要執行的具體行動或核心意圖
+    active_thread:                   # 當前場景正緊扣的未解懸念或任務線描述
 ```
 
 ## 生成完畢後的交接指令
@@ -358,8 +360,10 @@ world_delta:
    - scene_checkpoint:
        date_ingame: [scene_checkpoint.date_ingame]
        location: [scene_checkpoint.location]
-       situation: [scene_checkpoint.situation]
-       pending_action: [scene_checkpoint.pending_action]
+       situation_snapshot: [scene_checkpoint.situation_snapshot]
+       last_critical_dialogue: [scene_checkpoint.last_critical_dialogue]
+       player_next_intent: [scene_checkpoint.player_next_intent]
+       active_thread: [scene_checkpoint.active_thread]
 
 7. 更新 world/bestiary_index.yaml 的 named_creatures 和 backfilled_templates 計數
 8. git add . 並 git commit，訊息為：Session [session_id] 結算完畢

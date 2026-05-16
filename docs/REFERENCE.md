@@ -462,11 +462,13 @@ session_summary:
   next_session_hooks: []
   endgame_check: [false|imminent|true]
   endgame_trigger_condition: [string]
-    scene_checkpoint:                  # 選填，Gemini 用來寫入 system/_live/session_log.md
-    date_ingame: [Year_X_Day_XXX]    # 停止點的遊戲日期
-    location: [string]               # 停止點地點
-    situation: [string]              # 一句話描述停止時的場景狀態
-    pending_action: [string|null]    # 若有未完成的即時行動則填，否則 null
+  scene_checkpoint:                  # 選填，Claude 填寫，Gemini 中繼至 session_log.md
+    date_ingame: [Year_X_Day_XXX]
+    location: [string]
+    situation_snapshot: [string]
+    last_critical_dialogue: [string]
+    player_next_intent: [string]
+    active_thread: [string]
 ```
 
 **所有結算 YAML 均為強制 schema，欄位不得增減、不得改名。**
