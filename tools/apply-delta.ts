@@ -485,9 +485,10 @@ function applyWorldStateUpdates(delta: WorldDelta["world_delta"]): string[] {
     const rm = (state.resolution_map ?? {}) as Record<string, unknown>;
     const hi = ((rm.high_detail ?? []) as Record<string, unknown>[]);
     const ab = ((rm.abstract_state ?? []) as Record<string, unknown>[]);
+    const rsList = ((state.region_status ?? []) as Record<string, unknown>[]);
 
     for (const rc of delta.world_updates.region_changes) {
-      // 嘗試在 high_detail 和 abstract_state 找到對應地區
+      // 1. 更新 resolution_map
       const hiRegion = hi.find(r => r.region_id === rc.region_id);
       const abRegion = ab.find(r => r.region_id === rc.region_id);
       const target   = hiRegion ?? abRegion;
@@ -506,10 +507,18 @@ function applyWorldStateUpdates(delta: WorldDelta["world_delta"]): string[] {
       } else {
         warn(`地區 [${rc.region_id}] 不在 resolution_map 中，跳過`);
       }
+
+      // 2. 同步更新 region_status (用於 KB 快速檢索)
+      const rs = rsList.find(r => r.region_id === rc.region_id);
+      if (rs) {
+        if (rc.atmosphere) rs.current_atmosphere = rc.atmosphere;
+        if (rc.abstract_state) rs.population_status = rc.abstract_state;
+      }
     }
     rm.high_detail    = hi;
     rm.abstract_state = ab;
     state.resolution_map = rm;
+    state.region_status  = rsList;
   }
 
   // 更新危機狀態
@@ -528,6 +537,40 @@ function applyWorldStateUpdates(delta: WorldDelta["world_delta"]): string[] {
   }
 
   saveYaml(filePath, state);
+  return changes;
+}
+
+// ─────────────────────────────────────────────────────────────
+// 模組七：派系變更更新（/world/factions/*.yaml）
+// ─────────────────────────────────────────────────────────────
+
+function applyFactionUpdates(delta: WorldDelta["world_delta"]): string[] {
+  const changes: string[] = [];
+  if (!delta.world_updates?.faction_changes?.length) return changes;
+
+  for (const fc of delta.world_updates.faction_changes) {
+    const filePath = resolveVault("world", "factions", `${fc.faction_id}.yaml`);
+    if (!fs.existsSync(filePath)) {
+      warn(`派系 [${fc.faction_id}] 檔案不存在，跳過`);
+      continue;
+    }
+
+    const faction = loadYaml<Record<string, unknown>>(filePath) ?? {};
+    
+    // 記錄歷史變遷
+    const history = (faction.recent_history ?? []) as Array<{ date: string; event: string; impact: string }>;
+    history.push({
+      date:   delta.new_current_date ?? "unknown",
+      event:  fc.reason ?? "勢力變動",
+      impact: fc.power_shift ?? "未知",
+    });
+    // 只保留最近 10 條
+    faction.recent_history = history.slice(-10);
+
+    saveYaml(filePath, faction);
+    ok(`派系 [${fc.faction_id}] 歷史紀錄已更新`);
+    changes.push(`faction_updated: ${fc.faction_id}`);
+  }
   return changes;
 }
 
@@ -617,17 +660,21 @@ function updateBestiaryIndex(delta: WorldDelta["world_delta"]): void {
   if (!fs.existsSync(filePath)) { skip("bestiary_index.yaml 不存在，跳過"); return; }
 
   const index = loadYaml<Record<string, unknown>>(filePath) ?? {};
+  const counts = (index.current_counts ?? {}) as Record<string, number>;
 
-  // 重新計算 named_creatures 數量
+  // 重新計算 named_creatures 數量與列表
   const namedDir = resolveVault("world", "bestiary", "named");
   if (fs.existsSync(namedDir)) {
     const files = fs.readdirSync(namedDir).filter(f => f.endsWith(".yaml") && f !== ".gitkeep");
-    let activeCount = 0;
+    const activeIds: string[] = [];
     for (const f of files) {
       const c = loadYaml<Record<string, unknown>>(path.join(namedDir, f));
-      if (c && !c.archived) activeCount++;
+      if (c && !c.archived) {
+        activeIds.push(path.basename(f, ".yaml"));
+      }
     }
-    index.named_creatures = activeCount;
+    index.named_creatures = activeIds;
+    counts.named_creatures = activeIds.length;
   }
 
   // backfill 計數（只計算非 base_skeleton 的）
@@ -639,10 +686,12 @@ function updateBestiaryIndex(delta: WorldDelta["world_delta"]): void {
       };
       const backfilled = (lib.base_skeletons ?? [])
         .filter(s => s.backfill_source === "runtime_generated").length;
-      index.backfilled_templates = backfilled;
+      counts.backfilled_templates = backfilled;
+      // 若有 backfilled_templates 列表需求可在這裡擴充
     } catch { /* ignore */ }
   }
 
+  index.current_counts = counts;
   index.last_updated = delta.new_current_date ?? delta.processed_date;
   saveYaml(filePath, index);
   ok(`bestiary_index.yaml 計數更新`);
@@ -671,13 +720,15 @@ function applyPlayerStateUpdates(
   if (summary?.resource_changes?.length) {
     const resources = (state.resources ?? {}) as Record<string, unknown>;
     for (const rc of summary.resource_changes) {
-      const key = rc.resource.toLowerCase().replace(/\s+/g, "_");
-      if (rc.current_total !== undefined) {
-        // 優先用明確的 current_total
+      const key = rc.resource.toLowerCase().replace(/[\s\-]+/g, "_");
+      if (rc.current_total !== undefined && rc.current_total !== null) {
+        // 優先用明確的最終值
         resources[key] = rc.current_total;
       } else {
         // fallback：用 delta 加減
-        const current = (resources[key] as number) ?? 0;
+        const current = typeof resources[key] === "number"
+          ? (resources[key] as number)
+          : parseFloat(String(resources[key] ?? "0")) || 0;
         resources[key] = current + rc.delta;
       }
     }
@@ -701,8 +752,13 @@ function applyPlayerStateUpdates(
     }
     state.injuries = injuries;
 
-    // 自動計算 body_clock（取最高已填格數）
-    const maxSlot = Math.max(...injuries.map(i => (i.clock_slot as number) ?? 0));
+    // 自動計算 body_clock（取最高已填格數，排除永久傷勢）
+    const maxSlot = injuries
+      .filter(i => !i.permanent)
+      .reduce((max, i) => {
+        const slot = typeof i.clock_slot === "number" ? i.clock_slot : 0;
+        return slot > max ? slot : max;
+      }, 0);
     state.body_clock = `${maxSlot}/4`;
 
     ok(`玩家傷勢已更新（${summary.injury_updates.length} 項）`);
@@ -840,6 +896,9 @@ function main(): void {
 
   head("模組三：世界狀態更新（world_state.yaml）");
   allChanges.push(...applyWorldStateUpdates(delta));
+
+  head("模組七：派系變更更新（/world/factions/*.yaml）");
+  allChanges.push(...applyFactionUpdates(delta));
 
   head("模組四：Session Log 追加");
   appendSessionLog(delta, summary);

@@ -191,10 +191,12 @@ function updatePlayerState(cp: CheckpointSummary["checkpoint_summary"]): void {
     state.injuries = injuries;
 
     // 自動計算 body_clock（取所有非 permanent 傷勢中最高的時鐘格）
-    const maxSlot = injuries.reduce((max, i) => {
-      const slot = typeof i.clock_slot === "number" ? i.clock_slot : 0;
-      return slot > max ? slot : max;
-    }, 0);
+    const maxSlot = injuries
+      .filter(i => !i.permanent)
+      .reduce((max, i) => {
+        const slot = typeof i.clock_slot === "number" ? i.clock_slot : 0;
+        return slot > max ? slot : max;
+      }, 0);
     state.body_clock = `${maxSlot}/4`;
     ok(`body_clock 更新 → ${maxSlot}/4`);
 
