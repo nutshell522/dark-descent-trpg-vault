@@ -10,6 +10,8 @@
 
   ‧ system\_static\rules.yaml
 
+  ‧ system\_static\output_schemas.yaml
+
 ------------------------------------------------------------
 【類型乙】會隨每一次「對局結算／macro loop」更新的三個 KB 檔
 

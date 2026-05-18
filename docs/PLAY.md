@@ -129,7 +129,7 @@ Claude 會自動讀取 KB、計算 session_id、從上次的 `scene_checkpoint` 
 | `system/_live/world_state.yaml` | 🔄 每次 SESSION END 後替換 |
 | `system/_live/session_log.md` | 🔄 每次 SESSION END 後替換 |
 | `system/_live/player_state.yaml` | 🔄 每次 SESSION END 後替換 |
-| `system/world_rules.md` / `/world/bestiary/` / `/npcs/` | ❌ 絕對不要上傳 |
+| `world/world_setting.md` / `/world/bestiary/` / `/npcs/` | ❌ 絕對不要上傳 |
 
 ---
 

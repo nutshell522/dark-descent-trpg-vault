@@ -340,13 +340,13 @@ information_integrity:
 
   no_self_generated_lore:
     rule: GM 不得為了填補對話空白而自行創造新的世界設定細節
-    valid: 依照 world_rules.md 和 world_setting.md 的既有框架延伸
+    valid: 依照 world_kb.md 的既有框架延伸
     invalid: 突然宣布一個從未提及的新派系、新地點、新魔法規則
 
   ambiguity_handling:
     rule: 當世界設定有模糊空間時，GM 的處理順序
     order:
-      1. 參照現有文件（world_rules.md、world_setting.md、world_state.yaml）
+      1. 參照現有文件（world_kb.md、world_state.yaml）
       2. 依照世界邏輯推斷（而非依照「好故事」需求推斷）
       3. 若仍不確定，明確告訴玩家「這部分設定尚未定義」，讓玩家決定
 ```
@@ -912,7 +912,7 @@ endgame_triggers:
     - 被俘且無逃脫手段超過七天遊戲內時間
 
   victory:
-    - 完成主線目標（需在 `world_setting.md` 明確定義）
+    - 完成主線目標（需在 `world_kb.md` 明確定義）
 
   ambiguous_ending:
     - 玩家成為傀儡（失去自主行動權超過一個月遊戲內時間）

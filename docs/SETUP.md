@@ -99,9 +99,9 @@ Knowledge Base 先留空，世界生成後才有東西可以上傳。
 ```
 1. 開啟 Claude Project，開新對話
 2. 貼入 prompts/claude/CHARACTER_CREATION.md 全文
-3. 照著導學逐步回答（12 個必填問題 + 1 個選填選單）
-   涵蓋：種族、性別呈現、出身背景、姓名、起始地點、特技、
-         屬性分配、恕懼觸發、長期目標、裝備確認
+3. 照著導學逐步回答（5 步必填問卷）
+   涵蓋：種族 / 性別呈現 / 出身背景 / 特技 / 姓名·恕懼觸發·長期目標
+   屬性、起始地點、裝備由 AI 依背景自動推導，不需手動計算
 
 4. Claude 自動輸出完整 player_state.yaml
    複製後存成 system/_live/player_state.yaml
@@ -136,7 +136,7 @@ Knowledge Base 先留空，世界生成後才有東西可以上傳。
 |------|------|------|
 | D1 | `system/_static/rules.yaml` | 核心規則系統（上傳 KB） |
 | D1b | `system/_static/output_schemas.yaml` | 結算輸出 Schema（上傳 KB） |
-| D2 | `system/world_rules.md` | 世界物理法則（GM Only，不上傳 KB） |
+| D2 | `world/world_setting.md` | GM Only 世界設定，含秘密目標（由 world_setup.bat 生成，不上傳 KB） |
 | D3 | `bestiary_library.json` | 生物骨架庫（隨遊玩 Backfill 擴充） |
 | D4 | `prompts/gemini/template_library.json` | WorldGenerator Gem 知識庫 |
 

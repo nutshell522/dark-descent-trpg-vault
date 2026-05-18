@@ -460,7 +460,7 @@ permanent_changes:
 
 ---
 
-## 世界規則核心（world_rules.md）
+## 世界規則核心（world/world_setting.md）
 
 ```yaml
 world_principles:
