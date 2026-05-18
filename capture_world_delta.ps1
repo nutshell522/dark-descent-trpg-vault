@@ -31,7 +31,7 @@ try {
     Write-Host ""
 
     $outPath = Join-Path $VAULT "world_delta.yaml"
-    Write-Host "[1/3] Reading clipboard..."
+    Write-Host "[1/4] Reading clipboard..."
     $text = Get-Clipboard -Raw
     if ($null -eq $text -or $text.Trim().Length -eq 0) {
         $msg = "[ERROR] Clipboard empty. Copy Gemini YAML first (Ctrl+A, Ctrl+C)."
@@ -45,7 +45,7 @@ try {
     [System.IO.File]::WriteAllText($outPath, $text, $enc)
     Write-Host "  world_delta.yaml saved."
 
-    Write-Host "[2/3] Validate world_delta: ..."
+    Write-Host "[2/4] Validate world_delta: ..."
     $ok = Select-String -LiteralPath $outPath -Pattern "world_delta:" -SimpleMatch -Quiet
     if (-not $ok) {
         $msg = @"

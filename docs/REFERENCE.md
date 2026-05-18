@@ -400,76 +400,21 @@ serious_injury_procedure:
 
 ## Session 結算 Schema
 
+> **完整強制 schema 見 `system/_static/output_schemas.yaml`（Claude Project KB 常駐檔）。**  
+> 欄位不得增減、不得改名。以下為各指令的用途說明。
+
 ### checkpoint_summary（/checkpoint 輸出）
 
-`capture_checkpoint.bat` 讀取此格式，更新 `system/_live/player_state.yaml`。
-
-```yaml
-checkpoint_summary:
-  session_id: [string]
-  checkpoint_index: [數字]
-  date_ingame: [Year_X_Day_XXX]
-  player_state_delta:
-    resources: {}
-    injuries: []
-    body_clock: [數字/4]
-    mind_clock: [數字/4]
-  intel_gained: []
-  npc_interactions: []
-  npcs_to_persist: []
-  world_conflicts_noted: []
-  endgame_check: [false|imminent|true]
-  endgame_trigger_condition: [string]
-```
+`capture_checkpoint.bat` 讀取此格式，更新 `system/_live/player_state.yaml`。  
+包含：NPC 態度變化、生物遭遇結果、資源增減、傷勢更新、新情報、世界矛盾記錄、endgame_check，  
+以及 `scene_checkpoint`（下次 session 自動開場用的場景快照）。
 
 ### session_summary（SESSION END 輸出）
 
-此格式貼入 Gemini 世界結算 Gem，產出 world_delta。
-
-```yaml
-session_summary:
-  session_id: [string]
-  date_ingame: [Year_X_Day_XXX]
-  duration_ingame_days: [數字]
-  major_events:
-    - date: [Year_X_Day_XXX]
-      event: [string]
-      world_impact: [none|local|regional|global]
-  npc_changes:
-    - npc_id: [string]
-      name: [string]
-      attitude_delta: [improved|worsened|unchanged]
-      trust_delta: [數字]
-      persist_flag: [true|false]
-      persist_reason: [string]
-  creature_changes:
-    - encounter_id: [string]
-      outcome: [defeated|fled|resolved_nonviolent|persisted]
-      persist_flag: [true|false]
-      backfill_candidate: [true|false]
-  resource_changes:
-    - resource: [string]
-      delta: [數字]
-      current_total: [string]
-  injury_updates:
-    - description: [string]
-      clock_slot: [1|2|3|4]
-      permanent: [true|false]
-  rumors_created: []
-  world_impacts: []
-  world_conflicts_noted: []
-  pending_threads: []
-  next_session_hooks: []
-  endgame_check: [false|imminent|true]
-  endgame_trigger_condition: [string]
-  scene_checkpoint:                  # 選填，Claude 填寫，Gemini 中繼至 session_log.md
-    date_ingame: [Year_X_Day_XXX]
-    location: [string]
-    situation_snapshot: [string]
-    last_critical_dialogue: [string]
-    player_next_intent: [string]
-    active_thread: [string]
-```
+此格式貼入 Gemini 世界結算 Gem，產出 world_delta。  
+包含：major_events、npc_changes（含持久化判斷與 persist_snapshot）、creature_changes、  
+resource_changes、injury_updates、rumors_created、world_impacts、pending_threads、  
+next_session_hooks、endgame_check，以及 `scene_checkpoint`。
 
 **所有結算 YAML 均為強制 schema，欄位不得增減、不得改名。**
 
