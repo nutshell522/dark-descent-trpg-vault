@@ -86,9 +86,10 @@ Knowledge Base 先留空，世界生成後才有東西可以上傳。
             → 生成 system/_live/player_state.yaml 初始模板 → git commit
             → 自動開啟 system/ 資料夾
 
-5. 上傳以下 2 個檔案至 Claude Project KB（永久放著，幾乎不動）：
+5. 上傳以下 3 個檔案至 Claude Project KB（永久放著，幾乎不動）：
    system/_static/world_kb.md
    system/_static/rules.yaml
+   system/_static/output_schemas.yaml
 ```
 
 ---
@@ -134,6 +135,7 @@ Knowledge Base 先留空，世界生成後才有東西可以上傳。
 | 編號 | 路徑 | 用途 |
 |------|------|------|
 | D1 | `system/_static/rules.yaml` | 核心規則系統（上傳 KB） |
+| D1b | `system/_static/output_schemas.yaml` | 結算輸出 Schema（上傳 KB） |
 | D2 | `system/world_rules.md` | 世界物理法則（GM Only，不上傳 KB） |
 | D3 | `bestiary_library.json` | 生物骨架庫（隨遊玩 Backfill 擴充） |
 | D4 | `prompts/gemini/template_library.json` | WorldGenerator Gem 知識庫 |

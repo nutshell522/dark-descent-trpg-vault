@@ -61,7 +61,7 @@ Tip: Copy the full YAML block from Gemini (must contain the key world_delta:).
 
     Write-Host "  OK."
     Write-Host ""
-    Write-Host "[3/3] apply_delta.bat ..."
+    Write-Host "[3/4] apply_delta.bat ..."
     $apply = Join-Path $VAULT "apply_delta.bat"
     cmd.exe /c "`"$apply`""
     $code = $LASTEXITCODE
@@ -71,6 +71,19 @@ Tip: Copy the full YAML block from Gemini (must contain the key world_delta:).
         WriteErrLog $msg
         WaitDone
         exit $code
+    }
+
+    Write-Host ""
+    Write-Host "[4/4] 壓縮 session_log.md ..."
+    $sessionLog = Join-Path $VAULT "system" "_live" "session_log.md"
+    if (Test-Path $sessionLog) {
+        $compressScript = Join-Path $VAULT "tools" "compress-session-log.ts"
+        & npx ts-node $compressScript $sessionLog 2>&1
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host "  [WARNING] session_log 壓縮失敗，繼續執行。"
+        }
+    } else {
+        Write-Host "  [SKIP] session_log.md 不存在，跳過壓縮。"
     }
 
     Write-Host ""

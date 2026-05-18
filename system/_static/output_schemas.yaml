@@ -1,0 +1,303 @@
+# output_schemas.yaml
+# Dark Descent TRPG — 結算輸出 Schema
+# 版本：1.0
+# 此檔案放入 Claude Project Knowledge Base。
+# 欄位不得增減、不得改名。只輸出 YAML，不要任何解釋文字。
+
+# === 觸發：/checkpoint ===
+
+checkpoint_summary:
+  session_id: [string]
+  date_ingame: [Year_X_Day_XXX]
+  time_elapsed_ingame: [X天]
+
+  npc_changes:
+    - npc_id: [string]
+      name: [string]
+      attitude_delta: [improved|worsened|unchanged]
+      trust_delta: [數字，例：+1 或 -2]
+      new_memory:
+        event: [string]
+        emotional_weight: [low|medium|high]
+      stance_update:                          # 僅在立場發生改變時填寫，否則省略此欄位
+        topic: [string]
+        old_position: [support|oppose|contempt|fear|complicated]
+        new_position: [support|oppose|contempt|fear|complicated]
+        trigger_event: [string，說明造成改變的具體事件]
+      persist_flag: [true|false]
+      persist_reason: [string，若 true 則填原因]
+      persist_snapshot:                       # 僅在 persist_flag=true 時填寫，否則省略
+        identity:
+          gender: [string]
+          sexuality:
+            orientation: []
+            strict_preferences:
+              requires_race: []
+              requires_gender: []
+              absolute_exclusions:
+                race: []
+                gender: []
+          race: [string]
+        appearance:
+          build: [string]
+          notable_feature: [string]
+          clothing_style: [string]
+        quirk_profile:
+          has_quirk: [true|false]
+          speech_quirk: [string 或 null]
+          verbal_tic: [string 或 null]
+          quirk_intensity: [low|medium|high，has_quirk=false 時省略]
+          speech_examples: []
+        stance:
+          worldview_summary: [string]
+          strong_opinions: []
+        personality_seed:
+          greed: [low|medium|high]
+          loyalty: [low|medium|high]
+          paranoia: [low|medium|high]
+          trauma_level: [low|medium|high]
+        biases:
+          hates: []
+          respects: []
+          dealbreakers: []
+          emotional_weakness: [string]
+          exploitable_leverage: [string]
+        psychology:
+          coping_mechanism: [string]
+          social_posture: [string]
+          deception_style: [string]
+
+  creature_changes:
+    - encounter_id: [string]
+      template_id: [string]
+      outcome: [defeated|fled|resolved_nonviolent|persisted]
+      persist_flag: [true|false]
+      persist_reason: [string，若 true 則填原因]
+      backfill_candidate: [true|false]
+
+  resource_changes:
+    - resource: [string]
+      delta: [數字，正數為獲得，負數為消耗]
+      current_total: [string 或數字]
+
+  injury_updates:
+    - description: [string]
+      clock_slot: [1|2|3|4]
+      permanent: [true|false]
+      permanent_detail: [string，若 true 則描述]
+
+  new_information:
+    - content: [string]
+      source: [string]
+      reliability: [confirmed|suspected|rumor]
+
+  world_conflicts_noted:
+    - conflict: [string]
+      player_decision: [string，若已決定]
+
+  endgame_check: [false|imminent|true]
+  endgame_trigger_condition: [string，若非 false 則填]
+
+  scene_checkpoint:
+    date_ingame: [Year_X_Day_XXX]
+    location: [精確的當下位置]
+    situation_snapshot: [環境畫面一句話]
+    last_critical_dialogue: [存檔前最後 1-2 句關鍵 NPC 台詞或旁白宣告，逐字引用]
+    player_next_intent: [玩家接下來直接要執行的具體行動或核心意圖]
+    active_thread: [當前場景正緊扣的未解懸念或任務線描述]
+
+# === 觸發：SESSION END 或 /full_settlement ===
+
+session_summary:
+  session_id: [string]
+  date_ingame: [Year_X_Day_XXX]
+  duration_ingame_days: [數字]
+
+  major_events:
+    - date: [Year_X_Day_XXX]
+      event: [string]
+      world_impact: [none|local|regional|global]
+
+  npc_changes:
+    - npc_id: [string]
+      name: [string]
+      attitude_delta: [improved|worsened|unchanged]
+      trust_delta: [數字]
+      new_memories:
+        - event: [string]
+          emotional_weight: [low|medium|high]
+      relationship_to_player:
+        open_debts: []
+      stance_updates:                         # 僅在本 session 內立場發生改變時填寫，否則省略
+        - topic: [string]
+          old_position: [support|oppose|contempt|fear|complicated]
+          new_position: [support|oppose|contempt|fear|complicated]
+          trigger_event: [string]
+      persist_flag: [true|false]
+      persist_reason: [string]
+      tier_upgrade: [true|false]
+      persist_snapshot:  # 欄位結構同 checkpoint_summary.npc_changes.persist_snapshot
+
+  creature_changes:
+    - encounter_id: [string]
+      template_id: [string]
+      outcome: [defeated|fled|resolved_nonviolent|persisted]
+      persist_flag: [true|false]
+      persist_reason: [string]
+      backfill_candidate: [true|false]
+      backfill_trigger: [string，若 true 則填觸發條件]
+
+  resource_changes:
+    - resource: [string]
+      delta: [數字]
+      current_total: [string 或數字]
+
+  injury_updates:
+    - description: [string]
+      clock_slot: [1|2|3|4]
+      permanent: [true|false]
+      permanent_detail: [string]
+
+  rumors_created:
+    - source_event: [string]
+      origin_date: [Year_X_Day_XXX]
+      content: [string]
+      spread_speed: [slow|medium|fast|viral]
+      initial_believed_by: []
+
+  world_impacts:
+    - description: [string]
+      affected_region: [region_id 或 global]
+      severity: [minor|moderate|major]
+
+  world_conflicts_noted:
+    - conflict: [string]
+      player_decision: [string]
+
+  pending_threads: []
+  next_session_hooks: []
+
+  endgame_check: [false|imminent|true]
+  endgame_trigger_condition: [string]
+
+  scene_checkpoint:
+    date_ingame: [Year_X_Day_XXX]
+    location: [精確的當下位置]
+    situation_snapshot: [環境畫面一句話]
+    last_critical_dialogue: [存檔前最後 1-2 句關鍵 NPC 台詞或旁白宣告，逐字引用]
+    player_next_intent: [玩家接下來直接要執行的具體行動或核心意圖]
+    active_thread: [當前場景正緊扣的未解懸念或任務線描述]
+
+# === 觸發：/npc [描述] ===
+
+npc_runtime:
+  temp_id: [runtime_地區縮寫_流水號]
+  name: [string]
+  generated_at: [session_id]
+  age: [數字]
+  occupation: [string]
+
+  identity:
+    gender: [male|female|nonbinary|fluid|unknown|自訂]
+    sexuality:
+      orientation: []               # 可多選：straight / gay / bi / pan / ace / unknown
+      strict_preferences:
+        requires_race: []           # 空 = 任何種族皆可
+        requires_gender: []         # 空 = 任何性別皆可
+        absolute_exclusions:
+          race: []                  # 此 NPC 在任何情況下都不會對這些種族產生浪漫興趣
+          gender: []                # 此 NPC 在任何情況下都不會對這些性別產生浪漫興趣
+    race: [從 world_kb.md races 讀取的 id]
+
+  appearance:
+    build: [體型描述，例：矮壯、骨瘦如柴]
+    notable_feature: [一個讓人第一眼記住的特徵，例：左眼有舊傷、下巴有燒傷疤]
+    clothing_style: [穿著風格一句話]
+
+  speech_style: [整體語氣定調，例：簡短命令式、囉嗦愛繞彎子、永遠先質疑再接受]
+
+  quirk_profile:
+    has_quirk: [true|false]
+    # true  → 填寫以下所有欄位
+    # false → speech_quirk / verbal_tic 填 null，個性改以 speech_style + biases + stance 體現
+    #         禁止讓 NPC 因此變成無個性的佈景板
+    speech_quirk: [口癖，例：句尾愛加「懂嗎」、從不說「我」只說「本人」。has_quirk=false 填 null]
+    verbal_tic: [習慣用詞或語言習慣，例：愛用碼頭俚語。has_quirk=false 填 null]
+    quirk_intensity: [low|medium|high]   # has_quirk=false 時省略此欄位
+    speech_examples:
+      - [第一句示範台詞——has_quirk=true 必須體現口癖；has_quirk=false 體現語氣與個性]
+      - [第二句示範台詞]
+      - [第三句示範台詞]
+
+  stance:
+    worldview_summary: [一句話人生哲學，例：「強者吃弱者，這是自然。」]
+    strong_opinions:
+      - topic: [string，例：外族移入、陰陽師在村裡的權力、平民帶刀的權利]
+        position: [support|oppose|contempt|fear|complicated]
+        reaction_if_challenged: [string，描述 NPC 被挑戰時的具體反應方式]
+      # 至少填 2 條
+
+  current_state:
+    mood: [string]
+    stress_level: [low|medium|high]
+    immediate_need: [string]
+    hidden_problem: [string]
+    today_trigger: [今天發生了什麼讓他處於這個狀態，一句話]
+    interrupted_action: [被玩家搭話時正在做的具體事情，一句話，例：正在擦拭血跡、正在清點發霉物資、正在給義體除鏽]
+
+  psychology:
+    coping_mechanism: [面對 Grimdark 壓力的真實應對方式，例：麻木抽離、歇斯底里大笑、物質成癮、盲目迷信、過度補償的攻擊性]
+    social_posture: [對上/對下的互動面具，例：欺下媚上、虛張聲勢、迂腐瞧不起人、防禦性自卑、假裝親切的冷眼旁觀]
+    deception_style: [保護自身利益時的說謊習慣，例：選擇性省略、編造多餘細節、拙劣的肢體動作、滿嘴跑火車]
+
+  first_impression_of_player:          # 只在第一次見面時填入，之後以 relationship 追蹤
+    notices_first: [第一眼注意到玩家的什麼，例：走路方式、衣著等級]
+    default_assumption: [對玩家的預設判斷，例：又一個找麻煩的、可能是買家]
+    initial_stance: [hostile|wary|neutral|curious|open]
+
+  personality_seed:
+    greed: [low|medium|high]
+    loyalty: [low|medium|high]
+    paranoia: [low|medium|high]
+    trauma_level: [low|medium|high]
+
+  biases:
+    hates: []
+    respects: []
+    dealbreakers: []
+    emotional_weakness: [情感弱點，被觸碰會軟化或崩潰，例：提到死去的孩子、被人信任]
+    exploitable_leverage: [可利用的把柄，例：欠了高利貸、私藏禁書]
+
+  combat:
+    ability: [low|medium|high]
+    will_fight_if: [string]
+
+  knows_about_player: []
+  suspects_about_player: []
+  definitely_does_not_know: []
+  immediate_goal: [string]
+  hidden_goal: [string]
+
+# === 觸發：/encounter [描述] ===
+
+creature_encounter:
+  instance_id: [enc_地區縮寫_流水號]
+  template_id: [string，來自 bestiary_library.json]
+  ecology_tier: [tier_0_mundane|tier_1_low_fantasy|tier_2_mid_fantasy|tier_3_cosmic]
+  role: [minion|standard|elite|boss]
+  generated_at: [session_id]
+  location: [string]
+  group_size: [數字]
+  current_state:
+    hunger_level: [low|medium|high]
+    health: [full|wounded|critical]
+    behavior_mode: [string]
+  special_condition: [string 或 null]
+  player_can_observe: []
+  player_cannot_know: []
+  combat_bounds_check:
+    attack_modifier: [數字]
+    durability: [數字]
+    within_bounds: [true|false]
+  non_combat_resolution_eligible: [true|false]
+  backfill_candidate: [true|false]

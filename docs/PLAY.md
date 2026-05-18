@@ -125,6 +125,7 @@ Claude 會自動讀取 KB、計算 session_id、從上次的 `scene_checkpoint` 
 |------|---------|
 | `system/_static/world_kb.md` | ✅ 永久放著，幾乎不動 |
 | `system/_static/rules.yaml` | ✅ 永久放著，規則調整時才換 |
+| `system/_static/output_schemas.yaml` | ✅ 永久放著，幾乎不動 |
 | `system/_live/world_state.yaml` | 🔄 每次 SESSION END 後替換 |
 | `system/_live/session_log.md` | 🔄 每次 SESSION END 後替換 |
 | `system/_live/player_state.yaml` | 🔄 每次 SESSION END 後替換 |
