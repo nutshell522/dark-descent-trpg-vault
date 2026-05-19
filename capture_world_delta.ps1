@@ -61,7 +61,7 @@ Tip: Copy the full YAML block from Gemini (must contain the key world_delta:).
 
     Write-Host "  OK."
     Write-Host ""
-    Write-Host "[3/4] apply_delta.bat ..."
+    Write-Host "[3/5] apply_delta.bat ..."
     $apply = Join-Path $VAULT "apply_delta.bat"
     cmd.exe /c "`"$apply`""
     $code = $LASTEXITCODE
@@ -74,7 +74,7 @@ Tip: Copy the full YAML block from Gemini (must contain the key world_delta:).
     }
 
     Write-Host ""
-    Write-Host "[4/4] 壓縮 session_log.md ..."
+    Write-Host "[4/5] 壓縮 session_log.md ..."
     $sessionLog = Join-Path $VAULT "system" "_live" "session_log.md"
     if (Test-Path $sessionLog) {
         $compressScript = Join-Path $VAULT "tools" "compress-session-log.ts"
@@ -87,10 +87,14 @@ Tip: Copy the full YAML block from Gemini (must contain the key world_delta:).
     }
 
     Write-Host ""
-    Write-Host "Opening Claude in browser..."
-    Start-Process $ClaudeProjectUrl
+    Write-Host "[5/5] 生成 SESSION_START.md ..."
+    $genScript = Join-Path $VAULT "tools" "generate-session-start.ts"
+    & npx ts-node $genScript 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "  [WARNING] SESSION_START.md 生成失敗，請手動上傳 KB 或重新執行。"
+    }
 
-    WaitDone "Press Enter to close"
+    WaitDone "完成！下次開局：開 Claude Project → 新對話 → Ctrl+V 貼入 SESSION_START.md → 開始遊玩。`nPress Enter to close"
     exit 0
 } catch {
     $full = @"

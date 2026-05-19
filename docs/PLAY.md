@@ -4,15 +4,18 @@
 
 ---
 
-## 開局（每次，約 10 秒）
+## 開局（每次，約 5 秒）
 
 ```
 1. 開啟 Claude Project，開新對話
-2. 貼入 prompts/claude/SESSION_RESET.md 全文
+2. Ctrl+V（SESSION_START.md 已在剪貼板，capture_auto.bat 每次完成後自動複製）
 3. 送出
 ```
 
-Claude 會自動讀取 KB、計算 session_id、從上次的 `scene_checkpoint` 直接描述場景，不需要填任何欄位。
+Claude 直接從 inline 的世界狀態開場，不需要讀取 KB，不需要填任何欄位。
+
+> **首次或剪貼板遺失？** 手動複製 SESSION_START.md（根目錄）貼入。
+> 若 SESSION_START.md 不存在（尚未結算過），改貼 `prompts/claude/SESSION_RESET.md`。
 
 **想覆蓋開場？** 在文件後面直接加一句話就好：
 > 「這次從兩天後的貴族區開始，我剛接到一個新委託。」
@@ -66,13 +69,14 @@ Claude 會自動讀取 KB、計算 session_id、從上次的 `scene_checkpoint` 
 1. 輸入 /checkpoint
 2. Claude 輸出 checkpoint_summary YAML
 3. 全選輸出 → Ctrl+C
-4. 雙擊 capture_checkpoint.bat
+4. 雙擊 capture_auto.bat（自動識別 checkpoint_summary:）
    → 自動存成 checkpoint.yaml
    → 更新 player_state.yaml（資源、傷勢）
    → 備份到 /sessions/
    → git commit
    → 顯示本局獲得的情報、待持久化 NPC 清單
-5. 繼續遊玩（KB 不需要現在替換）
+   → 更新 SESSION_START.md 並複製到剪貼板
+5. 繼續遊玩
 ```
 
 ---
@@ -84,23 +88,20 @@ Claude 會自動讀取 KB、計算 session_id、從上次的 `scene_checkpoint` 
 ```
 1. 輸入 SESSION END
 2. Claude 輸出 session_summary YAML
-3. 全選輸出 → Ctrl+C → 雙擊 capture_session_end.bat
+3. 全選輸出 → Ctrl+C → 雙擊 capture_auto.bat（自動識別 session_summary:）
    → 自動存成 session_summary.yaml
    → 自動開啟瀏覽器到 Gemini 世界結算 Gem
 
 4. 開啟 session_summary.yaml → 全選 → 貼入 Gemini
 5. Gemini 輸出 world_delta YAML
-6. 全選輸出 → Ctrl+C → 雙擊 capture_world_delta.bat
+6. 全選輸出 → Ctrl+C → 再次雙擊 capture_auto.bat（自動識別 world_delta:）
    → 自動存成 world_delta.yaml 並套用所有結算
+   → 壓縮 session_log.md
    → git commit
-   → 自動開啟 system/_live/ 資料夾 + Claude Project KB 頁面
+   → 自動生成並更新 SESSION_START.md，複製到剪貼板
 
-7. 把 system/_live/ 資料夾中的3 個檔案拖曳到 Claude Project KB（替換舊版）：
-   world_state.yaml
-   session_log.md
-   player_state.yaml
-
-8. 下次開局貼入 Reset，Claude 自動從 scene_checkpoint 繼續
+7. 下次開局：開 Claude Project → 新對話 → Ctrl+V → 開始遊玩
+   （不需要上傳任何 KB 檔案）
 ```
 
 ---
@@ -126,9 +127,9 @@ Claude 會自動讀取 KB、計算 session_id、從上次的 `scene_checkpoint` 
 | `system/_static/world_kb.md` | ✅ 永久放著，幾乎不動 |
 | `system/_static/rules.yaml` | ✅ 永久放著，規則調整時才換 |
 | `system/_static/output_schemas.yaml` | ✅ 永久放著，幾乎不動 |
-| `system/_live/world_state.yaml` | 🔄 每次 SESSION END 後替換 |
-| `system/_live/session_log.md` | 🔄 每次 SESSION END 後替換 |
-| `system/_live/player_state.yaml` | 🔄 每次 SESSION END 後替換 |
+| `system/_live/world_state.yaml` | 🤖 由 capture_auto.bat 自動注入 SESSION_START.md，**無需手動上傳** |
+| `system/_live/session_log.md` | 🤖 由 capture_auto.bat 自動注入 SESSION_START.md，**無需手動上傳** |
+| `system/_live/player_state.yaml` | 🤖 由 capture_auto.bat 自動注入 SESSION_START.md，**無需手動上傳** |
 | `world/world_setting.md` / `/world/bestiary/` / `/npcs/` | ❌ 絕對不要上傳 |
 
 ---

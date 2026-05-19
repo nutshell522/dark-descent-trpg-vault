@@ -60,7 +60,7 @@ echo [3/3] Open system folder...
 start "" explorer "%VAULT%system\_live"
 
 echo.
-echo Done. Upload world_state.yaml, session_log.md, player_state.yaml to KB.
+echo Done. SESSION_START.md will be auto-generated next (includes inline state).
 echo.
 
 set /p CLEANUP=Delete temp yaml? (Y/other=keep):
